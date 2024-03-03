@@ -55,7 +55,8 @@ class TitleAnimation(Slide):
             FadeIn(logos, run_time=1),
         )
 
-        self.next_slide()
+        self.wait(0.1)
+        self.next_slide(auto_next=True)
 
         self.play(
             AnimationGroup(
