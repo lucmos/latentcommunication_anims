@@ -109,7 +109,7 @@ class ShapeLatentSpace(Slide):
         self.play(Create(cross := Cross(VGroup(practice_title, practice_list))))
 
         self.wait(0.1)
-        self.next_slide()
+        self.next_slide(auto_next=True)
 
         self.play(
             FadeOut(slide_title, shift=UP),
