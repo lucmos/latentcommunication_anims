@@ -1,4 +1,5 @@
-media
+/slides
+/media
 wandb
 multirun.yaml
 storage
