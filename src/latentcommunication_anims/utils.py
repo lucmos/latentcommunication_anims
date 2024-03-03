@@ -20,11 +20,11 @@ TARGET_COLORS = [
 ]
 
 
-def section_slide(slide: Slide, section_title: str):
+def section_slide(slide: Slide, section_title: str, auto_next: bool = False):
     slide_title = SectionTitle(section_title=section_title)
     slide_title.show(scene=slide)
     slide.wait(0.1)
-    slide.next_slide()
+    slide.next_slide(auto_next=auto_next)
     slide_title.hide(scene=slide)
 
 

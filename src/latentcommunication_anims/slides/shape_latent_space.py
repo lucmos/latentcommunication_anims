@@ -135,7 +135,7 @@ class ShapeLatentSpace(Slide):
         min_range = min(x_range[0], y_range[0], -x_range[1], -y_range[1])
         max_range = -min_range
 
-        section_slide(self, LATENT_SPACE_SHAPE_TEXT)
+        section_slide(self, LATENT_SPACE_SHAPE_TEXT, auto_next=True)
 
         self.absolute_difference_interleave()
 
@@ -168,9 +168,6 @@ class ShapeLatentSpace(Slide):
         toy_model1 = Tex("Bidimensional")
         toy_model2 = Tex("AutoEncoder")
         toy_model = VGroup(toy_model1, toy_model2).arrange(RIGHT, buff=0.2).to_edge(UP)
-
-        self.wait(0.1)
-        self.next_slide()
 
         self.play(
             AnimationGroup(Create(toy_model), FadeIn(model, shift=DOWN * 0.5)),
