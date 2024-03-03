@@ -4,6 +4,7 @@
 manim src/latentcommunication_anims/slides/title.py TitleAnimation
 manim src/latentcommunication_anims/slides/neural_networks.py NeuralNetworks
 manim src/latentcommunication_anims/slides/shape_latent_space.py ShapeLatentSpace
+manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel
 # manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt
 # manim src/latentcommunication_anims/slides/isometric_latent_spaces.py IsometricLatentSpaces

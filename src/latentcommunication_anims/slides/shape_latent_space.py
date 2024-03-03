@@ -293,8 +293,7 @@ class ShapeLatentSpace(Slide):
                     Create(vertical_line),
                     Create(horizontal_line),
                 ),
-                Create(data),
-                FadeIn(mini_digit),
+                AnimationGroup(Create(data), FadeIn(mini_digit)),
                 lag_ratio=0.9,
             )
         )
