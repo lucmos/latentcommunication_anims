@@ -1,0 +1,6 @@
+outs:
+- md5: ff05fe28f1f677d53af7f68c06d3d518.dir
+  size: 5574723
+  nfiles: 55
+  hash: md5
+  path: slides
