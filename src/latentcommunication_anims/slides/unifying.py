@@ -17,9 +17,6 @@ class Unifying(Slide):
         arrow.add_updater(lambda x: x.next_to(variations, DOWN))
         distinct_spaces.add_updater(lambda x: x.next_to(arrow, DOWN))
 
-        self.wait(0.1)
-        self.next_slide()
-
         self.play(
             AnimationGroup(
                 Create(variations),
@@ -60,7 +57,7 @@ class Unifying(Slide):
             *strategies,
             line_spacing=LARGE_BUFF * 1.5,
             left_buff=LARGE_BUFF * 1.5,
-            # global_shift=DOWN * 0.4,
+            global_shift=DOWN * 0.4,
             scale_active=1.25,
             inactive_opacity=0.35,
         )
