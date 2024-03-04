@@ -18,6 +18,10 @@ manim src/latentcommunication_anims/slides/relative/relreps_stitching.py RelRepS
 manim src/latentcommunication_anims/slides/relative/relreps_stitching_vision.py RelRepStitchingVision
 manim src/latentcommunication_anims/slides/relative/relreps_stitching_crosslingual.py RelRepStitchingCrossLingual
 
+# Translation
+manim src/latentcommunication_anims/slides/translation/translation.py Translation
+manim src/latentcommunication_anims/slides/translationalgorithm.py TranslationAlgorithm
+
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel
 # manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt
 # manim src/latentcommunication_anims/slides/isometric_latent_spaces.py IsometricLatentSpaces
