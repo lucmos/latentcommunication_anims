@@ -25,4 +25,5 @@ manim-slides present \
     Intuition \
     Correspondence \
     Limitations \
-    BridgeProblem
+    BridgeProblem \
+    BridgeFramework

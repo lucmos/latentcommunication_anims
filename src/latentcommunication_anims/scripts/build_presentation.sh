@@ -35,6 +35,7 @@ manim src/latentcommunication_anims/slides/correspondence.py Correspondence
 # Limitations
 manim src/latentcommunication_anims/slides/limitations.py Limitations
 manim src/latentcommunication_anims/slides/bridge/bridge_problem.py BridgeProblem
+manim src/latentcommunication_anims/slides/bridge/bridge_framework.py BridgeFramework
 
 
 
