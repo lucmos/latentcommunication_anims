@@ -28,7 +28,7 @@ class Limitations(Slide):
                 level=1,
                 group=0,
                 # symbol=None,
-                adjustment=(UP * 0.5),
+                adjustment=(UP * 0.4),
             ),
             Bullet(
                 r"At most affine \textit{(latent translation)}",
@@ -36,7 +36,7 @@ class Limitations(Slide):
                 level=1,
                 group=0,
                 # symbol=None,
-                adjustment=((UP * 2) * 0.5),
+                adjustment=((UP * 2) * 0.4),
             ),
             Bullet(
                 r"A large enough semantic correspondence to:",
@@ -51,7 +51,7 @@ class Limitations(Slide):
                 level=1,
                 group=1,
                 # symbol=None,
-                adjustment=(UP * 0.5),
+                adjustment=(UP * 0.4),
             ),
             Bullet(
                 r"Estimate $\mathcal{T}$ \textit{(latent translation)}",
@@ -59,7 +59,7 @@ class Limitations(Slide):
                 level=1,
                 group=1,
                 # symbol=None,
-                adjustment=(UP * 0.5) * 2,
+                adjustment=(UP * 0.4) * 2,
             ),
         )
 
