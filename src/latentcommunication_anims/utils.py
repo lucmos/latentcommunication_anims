@@ -1,4 +1,7 @@
+import random
+
 import pandas as pd
+import torch
 from manim import *
 from manim_slides import Slide
 from powermanim.templates.sectiontitle import SectionTitle
@@ -33,3 +36,10 @@ def get_run_opt(run_id: str) -> pd.DataFrame:
     # df.dim_0 = (df.dim_0 - df.dim_0.min()) / (df.dim_0.max() - df.dim_0.min()) * 2 - 1
     # df.dim_1 = (df.dim_1 - df.dim_1.min()) / (df.dim_1.max() - df.dim_1.min()) * 2 - 1
     return df
+
+
+def seed_everything(seed) -> int:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    return seed

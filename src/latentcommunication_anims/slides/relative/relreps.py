@@ -149,8 +149,9 @@ class RelReps(Slide):
                 x_length=6,
                 y_length=6,
                 tips=True,
-            ).to_edge(LEFT)
-            # .set_color(GRAY)
+            )
+            .to_edge(LEFT)
+            .set_color(GRAY)
         )
         right_axis = (
             Axes(
@@ -160,8 +161,9 @@ class RelReps(Slide):
                 x_length=6,
                 y_length=6,
                 tips=True,
-            ).to_edge(RIGHT)
-            # .set_color(GRAY)
+            )
+            .to_edge(RIGHT)
+            .set_color(GRAY)
         )
 
         left_dots = self.resume_optimization(
