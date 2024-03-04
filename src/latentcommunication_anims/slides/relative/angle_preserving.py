@@ -33,7 +33,7 @@ class AnglePreserving(Slide):
         answer = Tex(r"Yes!").scale(1.5).shift(UP * 2.5)
         answer2 = Tex(
             r"Here, we assume\\",
-            "an angle-preserving transformation $\mathcal{T}$ of the latent space",
+            "an angle-norm preserving transformation $\mathcal{T}$ of the latent space",
             font_size=44,
         ).next_to(answer, DOWN, buff=MED_LARGE_BUFF)
 
@@ -45,7 +45,7 @@ class AnglePreserving(Slide):
             )
         )
 
-        invshowcase = Invariance(
+        inv_showcase = Invariance(
             Axes(
                 x_range=[-1.5, 1.5],
                 y_range=[-1.5, 1.5],
@@ -57,7 +57,7 @@ class AnglePreserving(Slide):
             .set_opacity(0.5)
         )
 
-        self.play(Create(invshowcase))
+        self.play(Create(inv_showcase))
 
         for i in [
             np.pi * 0.1,
@@ -65,7 +65,7 @@ class AnglePreserving(Slide):
             np.pi * 0.2,
         ]:
             self.play(
-                invshowcase.transformation_anim(
+                inv_showcase.transformation_anim(
                     np.array(
                         [
                             [np.cos(i), -np.sin(i), 0],
@@ -79,22 +79,22 @@ class AnglePreserving(Slide):
 
         for i in range(2, 5):
             self.play(
-                invshowcase.transformation_anim(
-                    invshowcase.get_random_ortho_matrix(),
+                inv_showcase.transformation_anim(
+                    inv_showcase.get_random_ortho_matrix(),
                     run_time=0.5,
                 )
             )
 
         point_indices = [0, 1, 2, 7, 8]
-        radii_anim, lines = invshowcase.radii_anim(point_indices, run_time=0.275)
+        radii_anim, lines = inv_showcase.radii_anim(point_indices, run_time=0.275)
         self.play(radii_anim)
 
-        self.play(invshowcase.rescale_along_radius_anim(point_indices, lines=lines))
+        self.play(inv_showcase.rescale_along_radius_anim(point_indices, lines=lines))
 
         self.next_slide()
 
         self.play(
-            invshowcase.rescale_all_to_unit_anim(
+            inv_showcase.rescale_all_to_unit_anim(
                 run_time=1.0,
             )
         )
@@ -108,7 +108,7 @@ class AnglePreserving(Slide):
         self.play(
             AnimationGroup(
                 # AnimationGroup(*(FadeOut(x) for x in [triangle])),
-                FadeOut(invshowcase),
+                FadeOut(inv_showcase),
                 FadeIn(relrep_need),
                 lag_ratio=0.5,
             )

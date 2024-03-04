@@ -267,7 +267,7 @@ def relative_projection(x, anchors):
             MathBullet(
                 r"\mathbf{r}_{",
                 r"\mathbf{x}^{(i)}",
-                r"} \text{ is a universal representation computed \emph{indipendently} for each space }",
+                r"} \text{ is a universal representation computed \emph{independently} for each space }",
                 font_size=FONT_SIZE,
             ),
             MathBullet(
@@ -348,7 +348,7 @@ def relative_projection(x, anchors):
 
         arrow = Arrow(0.5 * UP, 0.5 * DOWN).next_to(cosine, DOWN, buff=MED_LARGE_BUFF)
         invariance = Tex(
-            r"invariant to \textbf{angle-preserving transformations} of the latent space", font_size=34
+            r"invariant to \textbf{angle-norm preserving transformations} of the latent space", font_size=34
         ).next_to(arrow, DOWN, buff=MED_LARGE_BUFF)
 
         self.play(
