@@ -28,4 +28,5 @@ manim-slides present \
     BridgeProblem \
     BridgeFramework \
     BridgeResults \
-    BootstrappingIntro
+    BootstrappingIntro \
+    BootstrappingResults
