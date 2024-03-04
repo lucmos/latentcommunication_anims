@@ -174,7 +174,10 @@ class Translation(Slide):
     def construct(self):
         slide_title = SectionTitle(section_title="Direct Translation")
         # TODO: decidi che fare
-        reference = Reference(text="Maiorca et al. “Latent Space Translation via Semantic Alignment”, NeurIPS 2023")
+        reference = Reference(
+            text="Maiorca*, Moschella*, et al. “Latent Space Translation via Semantic Alignment”, NeurIPS 2023",
+            font_size=24,
+        )
         self.play(
             slide_title.show(),
             FadeIn(reference),

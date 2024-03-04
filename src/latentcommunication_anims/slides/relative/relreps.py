@@ -108,7 +108,8 @@ class RelReps(Slide):
     def construct(self):
         slide_title = SectionTitle(section_title="Universal Space")
         reference = Reference(
-            text="Moschella et al. “Relative representations enable zero-shot latent space communication”, ICLR 2023 (oral)"
+            text="Moschella*, Maiorca*, et al. “Relative representations enable zero-shot latent space communication”, ICLR 2023 (oral)",
+            font_size=24,
         )
         self.play(
             slide_title.show(),
