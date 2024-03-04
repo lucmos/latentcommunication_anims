@@ -24,7 +24,6 @@ class TranslationAlgorithm(Slide):
     def construct(self):
         slide_title = Tex("Algorithm").to_edge(UP)
 
-        self.next_slide()
         self.play(Create(slide_title))
 
         algo = (
@@ -92,7 +91,7 @@ class TranslationAlgorithm(Slide):
         )
         self.play(FadeIn(bulletlist), run_time=0.5)
 
-        self.wait(0.5)
+        self.wait(0.1)
         self.next_slide()
 
         samples = [42, 7, 33]
@@ -128,6 +127,7 @@ class TranslationAlgorithm(Slide):
         semantic_alignment_label = Tex(r"\textbf{Semantic Alignment!}", font_size=38).next_to(semantic_alignment, UP)
         semantic_alignment = Group(semantic_alignment, semantic_alignment_label)
 
+        self.wait(0.1)
         self.next_slide()
         # anchor1
         self.play(
@@ -138,6 +138,7 @@ class TranslationAlgorithm(Slide):
             FadeIn(anchor_images1),
         )
 
+        self.wait(0.1)
         self.next_slide()
         # anchor2
         self.play(
@@ -148,6 +149,7 @@ class TranslationAlgorithm(Slide):
             FadeIn(anchor_images2),
         )
 
+        self.wait(0.1)
         self.next_slide()
         # correspondence
         self.play(
@@ -225,6 +227,7 @@ class TranslationAlgorithm(Slide):
             )
             regularized_anims.append(MoveToTarget(polygon))
 
+        self.wait(0.1)
         self.next_slide()
         # encoding
         self.play(
@@ -249,7 +252,9 @@ class TranslationAlgorithm(Slide):
             ),
         )
 
+        self.wait(0.1)
         self.next_slide()
+
         # regularization
         self.play(
             AnimationGroup(
@@ -270,12 +275,14 @@ class TranslationAlgorithm(Slide):
             ),
         )
 
+        self.wait(0.1)
         self.next_slide()
         self.play(bulletlist.only_next())
 
         arrow = Arrow(0.2 * RIGHT, 0.2 * LEFT).next_to(bulletlist.rows[-1][-1], RIGHT, buff=MED_LARGE_BUFF)
         arrow_label = Tex(r"\textbf{Mostly orthogonal!}", font_size=38).next_to(arrow, RIGHT)
 
+        self.wait(0.1)
         self.next_slide()
         self.play(
             AnimationGroup(
@@ -288,6 +295,7 @@ class TranslationAlgorithm(Slide):
             )
         )
 
+        self.wait(0.1)
         self.next_slide(auto_next=True)
         self.play(
             FadeOut(arrow),
