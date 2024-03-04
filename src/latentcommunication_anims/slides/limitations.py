@@ -10,7 +10,7 @@ from latentcommunication_anims.utils import section_slide
 FONT_SIZE = 48
 
 
-class Limitation(Slide):
+class Limitations(Slide):
     def construct(self) -> None:
         section_slide(self, section_title="Limitations")
 

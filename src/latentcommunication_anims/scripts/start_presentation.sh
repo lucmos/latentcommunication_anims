@@ -23,4 +23,5 @@ manim-slides present \
     TranslationCrossmodal \
     TranslationOtherResults \
     Intuition \
-    Correspondence
+    Correspondence \
+    Limitations
