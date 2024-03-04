@@ -33,4 +33,5 @@ manim-slides present \
     Asif \
     RL \
     Conclusions \
-    FutureWorks
+    FutureWorks \
+    Thanks
