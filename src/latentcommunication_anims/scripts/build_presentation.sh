@@ -47,6 +47,7 @@ manim src/latentcommunication_anims/slides/applications/rl.py RL
 
 # Conclusions
 manim src/latentcommunication_anims/slides/conclusions.py Conclusions
+manim src/latentcommunication_anims/slides/futureworks.py FutureWorks
 
 
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel

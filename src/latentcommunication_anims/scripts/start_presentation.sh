@@ -32,4 +32,5 @@ manim-slides present \
     BootstrappingResults \
     Asif \
     RL \
-    Conclusions
+    Conclusions \
+    FutureWorks
