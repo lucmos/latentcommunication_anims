@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
 
 
+# Intro
 manim src/latentcommunication_anims/slides/title.py TitleAnimation
 manim src/latentcommunication_anims/slides/neural_networks.py NeuralNetworks
 manim src/latentcommunication_anims/slides/shape_latent_space.py ShapeLatentSpace
 manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt
 manim src/latentcommunication_anims/slides/unifying.py Unifying
-manim src/latentcommunication_anims/slides/relreps.py RelReps
+
+# Relative
+manim src/latentcommunication_anims/slides/relative/relreps.py RelReps
+manim src/latentcommunication_anims/slides/relative/angle_preserving.py AnglePreserving
+manim src/latentcommunication_anims/slides/relative/relreps_algo.py RelRepsAlgo
+manim src/latentcommunication_anims/slides/relative/semantic_space.py SemanticSpace
+manim src/latentcommunication_anims/slides/relative/latent_metric.py LatentMetric
+manim src/latentcommunication_anims/slides/relative/relreps_stitching.py RelRepStitching
+manim src/latentcommunication_anims/slides/relative/relreps_stitching_vision.py RelRepStitchingVision
+manim src/latentcommunication_anims/slides/relative/relreps_stitching_crosslingual.py RelRepStitchingCrossLingual
 
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel
 # manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt

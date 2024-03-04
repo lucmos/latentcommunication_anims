@@ -292,7 +292,7 @@ class RelReps(Slide):
         )
 
         self.wait()
-        self.next_slide()
+        self.next_slide(auto_next=True)
 
         self.play(
             AnimationGroup(*(Uncreate(x) for x in left_dots), lag_ratio=0.2),
@@ -303,4 +303,4 @@ class RelReps(Slide):
             run_time=2,
         )
 
-        self.wait(0.05)
+        self.wait(0.1)

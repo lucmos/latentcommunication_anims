@@ -16,7 +16,7 @@ def ncycles(iterable, n):
     return itertools.chain.from_iterable(itertools.repeat(tuple(iterable), n))
 
 
-class IsometricLatentSpaces(Slide):
+class AnglePreserving(Slide):
     def construct(self):
 
         question = Tex(
@@ -117,6 +117,6 @@ class IsometricLatentSpaces(Slide):
         self.play(ShowPassingFlash(Underline(relrep_need, color=YELLOW)))
         self.wait()
 
-        self.next_slide()
+        self.next_slide(auto_next=True)
         self.play(*(Uncreate(x) for x in [relrep_need, answer, answer2]))
         self.wait(0.1)

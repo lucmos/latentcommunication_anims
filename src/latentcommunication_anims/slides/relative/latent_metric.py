@@ -132,7 +132,6 @@ class LatentMetric(Slide):
     def construct(self):
         section_slide(self, r"Latent Performance Metric")
 
-        self.next_slide()
         slide_title = Tex("Consider a node classification task...")
         self.play(FadeIn(slide_title))
 
@@ -534,7 +533,7 @@ class LatentMetric(Slide):
         for corr, axes in zip(all_corr, all_axes):
             corr.scale(0.5).next_to(axes.x_axis, UP)
         self.play(*(FadeIn(x) for x in all_axes))
-        self.play(*all_anims, run_time=7.5)
+        self.play(*all_anims, run_time=6)
         self.play(*(FadeIn(x) for x in all_corr))
 
         self.wait()

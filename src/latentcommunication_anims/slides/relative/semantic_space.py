@@ -28,7 +28,6 @@ class SemanticSpace(Slide):
     def construct(self):
         section_slide(self, "Semantic Invariance")
 
-        self.next_slide()
         consider = Tex(r"Given some \emph{words}...").shift(UP * 0.5)
         consider2 = Tex(r"...consider their \emph{embeddings} in different spaces").next_to(
             consider, DOWN, buff=LARGE_BUFF
