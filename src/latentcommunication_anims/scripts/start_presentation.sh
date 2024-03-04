@@ -31,4 +31,5 @@ manim-slides present \
     BootstrappingIntro \
     BootstrappingResults \
     Asif \
-    RL
+    RL \
+    Conclusions
