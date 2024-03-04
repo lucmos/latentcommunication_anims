@@ -24,6 +24,8 @@ manim src/latentcommunication_anims/slides/translation/translationalgorithm.py T
 manim src/latentcommunication_anims/slides/translation/maindifference.py TransaltionMainDifference
 manim src/latentcommunication_anims/slides/translation/translation_stitching.py TranslationStitching
 manim src/latentcommunication_anims/slides/translation/crossmodal.py TranslationCrossmodal
+manim src/latentcommunication_anims/slides/translation/results.py TranslationOtherResults
+
 
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel
 # manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt
