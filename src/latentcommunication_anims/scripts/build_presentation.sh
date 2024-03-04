@@ -43,6 +43,7 @@ manim src/latentcommunication_anims/slides/bridge/bootstrapping_results.py Boots
 # Applications
 manim src/latentcommunication_anims/slides/applying.py Applying
 manim src/latentcommunication_anims/slides/asif.py Asif
+manim src/latentcommunication_anims/slides/rl.py RL
 
 
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel
