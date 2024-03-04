@@ -33,7 +33,7 @@ class IsometricLatentSpaces(Slide):
         answer = Tex(r"Yes!").scale(1.5).shift(UP * 2.5)
         answer2 = Tex(
             r"Here, we assume\\",
-            "as an angle-preserving transformation $\mathcal{T}$ of the latent space",
+            "an angle-preserving transformation $\mathcal{T}$ of the latent space",
             font_size=44,
         ).next_to(answer, DOWN, buff=MED_LARGE_BUFF)
 
