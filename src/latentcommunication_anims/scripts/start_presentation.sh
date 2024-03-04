@@ -17,6 +17,7 @@ manim-slides present \
     RelRepStitchingCrossLingual \
     Translation \
     TranslationAlgorithm \
+    AffineTransformation \
     TransaltionMainDifference \
     TranslationStitching \
     TranslationCrossmodal \

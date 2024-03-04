@@ -21,6 +21,7 @@ manim src/latentcommunication_anims/slides/relative/relreps_stitching_crosslingu
 # Translation
 manim src/latentcommunication_anims/slides/translation/translation.py Translation
 manim src/latentcommunication_anims/slides/translation/translationalgorithm.py TranslationAlgorithm
+manim src/latentcommunication_anims/slides/translation/affinetransformation.py AffineTransformation
 manim src/latentcommunication_anims/slides/translation/maindifference.py TransaltionMainDifference
 manim src/latentcommunication_anims/slides/translation/translation_stitching.py TranslationStitching
 manim src/latentcommunication_anims/slides/translation/crossmodal.py TranslationCrossmodal
