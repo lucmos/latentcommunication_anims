@@ -21,4 +21,6 @@ manim-slides present \
     TransaltionMainDifference \
     TranslationStitching \
     TranslationCrossmodal \
-    TranslationOtherResults
+    TranslationOtherResults \
+    Intuition \
+    Correspondence

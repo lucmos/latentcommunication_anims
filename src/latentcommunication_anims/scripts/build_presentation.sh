@@ -30,6 +30,7 @@ manim src/latentcommunication_anims/slides/translation/results.py TranslationOth
 
 # Intuition
 manim src/latentcommunication_anims/slides/intuition.py Intuition
+manim src/latentcommunication_anims/slides/correspondence.py Correspondence
 
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel
 # manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt
