@@ -24,4 +24,5 @@ manim-slides present \
     TranslationOtherResults \
     Intuition \
     Correspondence \
-    Limitations
+    Limitations \
+    BridgeProblem
