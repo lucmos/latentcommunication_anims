@@ -276,7 +276,7 @@ class TranslationAlgorithm(Slide):
         arrow = Arrow(0.2 * RIGHT, 0.2 * LEFT).next_to(bulletlist.rows[-1][-1], RIGHT, buff=MED_LARGE_BUFF)
         arrow_label = Tex(r"\textbf{Mostly orthogonal!}", font_size=38).next_to(arrow, RIGHT)
 
-        self.next_slide(auto_next=True)
+        self.next_slide()
         self.play(
             AnimationGroup(
                 AnimationGroup(
@@ -286,6 +286,16 @@ class TranslationAlgorithm(Slide):
                 ShowPassingFlash(Underline(arrow_label, color=YELLOW)),
                 lag_ratio=0.5,
             )
+        )
+
+        self.next_slide(auto_next=True)
+        self.play(
+            FadeOut(arrow),
+            FadeOut(arrow_label),
+            FadeOut(bulletlist),
+            FadeOut(slide_title),
+            FadeOut(semantic_alignment),
+            *(FadeOut(x, shift=DOWN, run_time=1.5) for x in (*correspondence, *polygons)),
         )
 
     # TODO: Clarify assumption!

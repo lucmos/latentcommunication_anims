@@ -13,7 +13,7 @@ class TitleAnimation(Slide):
         title.move_to(point_or_mobject=ORIGIN)
 
         top_authors = (
-            VGroup(*[Tex(x, font_size=40) for x in (r"\textit{Luca Moschella}",)]).to_corner(DL).set_opacity(0.5)
+            VGroup(*[Tex(x, font_size=40) for x in (r"\textit{Luca Moschella}",)]).to_corner(DL).set_opacity(0.9)
         )
 
         # other_authors = VGroup(

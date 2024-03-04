@@ -18,23 +18,23 @@ class TranslationOtherResults(Slide):
                 group=0,
                 symbol=None,
             ),
-            Bullet(r"Both on generation and classification tasks", font_size=FONT_SIZE, level=1, group=1),
+            Bullet(r"Both on generation and classification tasks", font_size=FONT_SIZE, level=1, group=0),
             Bullet(
-                r"\textbf{Cross-architecture}: more than 10 pre-trained models!", font_size=FONT_SIZE, level=1, group=2
+                r"\textbf{Cross-architecture}: more than 10 pre-trained models!", font_size=FONT_SIZE, level=1, group=1
             ),
             Bullet(
                 r"\textbf{Cross-modality}: stitching between vision and language latent spaces",
                 font_size=FONT_SIZE,
                 level=1,
-                group=3,
+                group=2,
             ),
-            Bullet(r"And evaluate it on more than 10 datasets ", font_size=FONT_SIZE, level=1, group=4),
+            Bullet(r"And evaluate it on more than 10 datasets ", font_size=FONT_SIZE, level=1, group=3),
             Bullet(
                 r"We observe that the transformation $\mathcal{T}$ can be\\",
                 r"constrained to be \textbf{orthogonal} without performance loss",
                 font_size=FONT_SIZE,
                 level=0,
-                group=5,
+                group=4,
                 symbol=None,
                 adjustment=DOWN / 2 + RIGHT * 1.6,
             ),

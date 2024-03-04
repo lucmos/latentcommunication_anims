@@ -14,4 +14,10 @@ manim-slides present \
     LatentMetric \
     RelRepStitching \
     RelRepStitchingVision \
-    RelRepStitchingCrossLingual
+    RelRepStitchingCrossLingual \
+    Translation \
+    TranslationAlgorithm \
+    TransaltionMainDifference \
+    TranslationStitching \
+    TranslationCrossmodal \
+    TranslationOtherResults
