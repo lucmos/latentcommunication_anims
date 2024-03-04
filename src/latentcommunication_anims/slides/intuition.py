@@ -12,7 +12,7 @@ FONT_SIZE = 38
 
 class Intuition(Slide):
     def construct(self) -> None:
-        slidetitle_text = "Why does it work?"
+        slidetitle_text = "Why do they work?"
         section_slide(self, section_title=slidetitle_text)
 
         conclusions = (
