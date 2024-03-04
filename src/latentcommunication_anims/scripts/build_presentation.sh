@@ -40,6 +40,10 @@ manim src/latentcommunication_anims/slides/bridge/results.py BridgeResults
 manim src/latentcommunication_anims/slides/bridge/bootstrapping_intro.py BootstrappingIntro
 manim src/latentcommunication_anims/slides/bridge/bootstrapping_results.py BootstrappingResults
 
+# Applications
+manim src/latentcommunication_anims/slides/applying.py Applying
+manim src/latentcommunication_anims/slides/asif.py Asif
+
 
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel
 # manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt

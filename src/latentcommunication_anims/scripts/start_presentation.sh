@@ -29,4 +29,5 @@ manim-slides present \
     BridgeFramework \
     BridgeResults \
     BootstrappingIntro \
-    BootstrappingResults
+    BootstrappingResults \
+    Asif
