@@ -287,3 +287,5 @@ class TranslationAlgorithm(Slide):
                 lag_ratio=0.5,
             )
         )
+
+    # TODO: Clarify assumption!
