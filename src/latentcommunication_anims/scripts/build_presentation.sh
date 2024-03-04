@@ -6,6 +6,7 @@ manim src/latentcommunication_anims/slides/neural_networks.py NeuralNetworks
 manim src/latentcommunication_anims/slides/shape_latent_space.py ShapeLatentSpace
 manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt
 manim src/latentcommunication_anims/slides/unifying.py Unifying
+manim src/latentcommunication_anims/slides/relreps.py RelReps
 
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel
 # manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt
