@@ -28,6 +28,9 @@ manim src/latentcommunication_anims/slides/translation/crossmodal.py Translation
 manim src/latentcommunication_anims/slides/translation/results.py TranslationOtherResults
 
 
+# Intuition
+manim src/latentcommunication_anims/slides/intuition.py Intuition
+
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel
 # manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt
 # manim src/latentcommunication_anims/slides/isometric_latent_spaces.py IsometricLatentSpaces

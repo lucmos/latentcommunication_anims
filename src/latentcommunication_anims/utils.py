@@ -23,12 +23,13 @@ TARGET_COLORS = [
 ]
 
 
-def section_slide(slide: Slide, section_title: str, auto_next: bool = False):
+def section_slide(slide: Slide, section_title: str, auto_next: bool = False) -> SectionTitle:
     slide_title = SectionTitle(section_title=section_title)
     slide.play(slide_title.show())
     slide.wait(0.1)
     slide.next_slide(auto_next=auto_next)
     slide.play(slide_title.hide())
+    return slide_title
 
 
 def get_run_opt(run_id: str) -> pd.DataFrame:
