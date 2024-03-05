@@ -22,25 +22,35 @@ class Unireps(Slide):
             .scale(0.4)
             .next_to(longtitle, DOWN, buff=LARGE_BUFF)
         )
-        community = Tex(r"\emph{Join the community!}").next_to(unireps_qr, RIGHT, buff=LARGE_BUFF)
+        # community = Tex(r"\emph{Join the community!}").next_to(unireps_qr, RIGHT, buff=LARGE_BUFF)
 
         self.play(
+            # AnimationGroup(
             AnimationGroup(
-                AnimationGroup(
-                    FadeIn(title),
-                    FadeIn(longtitle),
-                    FadeIn(unireps_qr),
-                    run_time=1.5,
-                    lag_ratio=0.2,
-                ),
-                FadeIn(community),
-                lag_ratio=0.8,
-            )
+                FadeIn(title),
+                FadeIn(longtitle),
+                FadeIn(unireps_qr),
+                run_time=1.5,
+                lag_ratio=0.2,
+            ),
+            # FadeIn(community),
+            # lag_ratio=0.8,
+            # )
         )
 
         self.wait(duration=0.1)
         self.next_slide(auto_next=True)
 
-        self.play(*(FadeOut(mob) for mob in (title, longtitle, unireps_qr, community)))
+        self.play(
+            *(
+                FadeOut(mob)
+                for mob in (
+                    title,
+                    longtitle,
+                    unireps_qr,
+                    # community,
+                )
+            )
+        )
 
         self.wait(duration=0.1)
