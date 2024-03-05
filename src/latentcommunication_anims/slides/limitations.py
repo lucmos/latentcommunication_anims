@@ -21,7 +21,7 @@ class Limitations(Slide):
                 symbol="1)",
             ),
             Bullet(
-                r"Angle-norm preserving \textit{(relative)}",
+                r"Angle-norm preserving \textit{(relative representations)}",
                 font_size=FONT_SIZE // 1.5,
                 level=1,
                 group=0,
@@ -44,7 +44,7 @@ class Limitations(Slide):
                 symbol="2)",
             ),
             Bullet(
-                r"Represent meaningful information \textit{(relative)}",
+                r"Represent meaningful information \textit{(relative representations)}",
                 font_size=FONT_SIZE // 1.5,
                 level=1,
                 group=1,
