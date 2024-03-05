@@ -11,7 +11,6 @@ FONT_SIZE = 44
 class FutureWorks(Slide):
     def construct(self):
         section_slide(self, "Future Works")
-        self.next_slide()
 
         title = Tex(
             r"Possible Research Directions",

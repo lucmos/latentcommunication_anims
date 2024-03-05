@@ -34,4 +34,5 @@ manim-slides present \
     RL \
     Conclusions \
     FutureWorks \
+    Unireps \
     Thanks

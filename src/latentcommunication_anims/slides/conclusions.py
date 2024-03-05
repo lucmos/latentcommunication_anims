@@ -11,7 +11,6 @@ FONT_SIZE = 38
 class Conclusions(Slide):
     def construct(self):
         section_slide(self, "Conclusions")
-        self.next_slide()
 
         zeroshot = Tex(
             r"\textbf{Latent communication} between different latent spaces",
