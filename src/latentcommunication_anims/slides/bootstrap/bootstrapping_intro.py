@@ -19,7 +19,7 @@ SEED_COLOR = ORANGE
 PERMUTATION_COLOR = PURPLE
 
 
-class BoostrappingIntro(Slide):
+class BootstrappingIntro(Slide):
     def construct(self) -> None:
         slide_title = SectionTitle(section_title="Limited Semantic Correspondence")
         reference = Reference(
