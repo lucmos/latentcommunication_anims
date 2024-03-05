@@ -91,9 +91,6 @@ class TranslationAlgorithm(Slide):
         )
         self.play(FadeIn(bulletlist), run_time=0.5)
 
-        self.wait(0.1)
-        self.next_slide()
-
         samples = [42, 7, 33]
         anchor_images1 = (
             Group(*[ImageMobject(DATASET1[sample_idx][0], image_mode="RGB") for sample_idx in samples])

@@ -30,6 +30,7 @@ manim-slides present \
     BridgeResults \
     BootstrappingIntro \
     BootstrappingResults \
+    Applying \
     Asif \
     RL \
     Conclusions \

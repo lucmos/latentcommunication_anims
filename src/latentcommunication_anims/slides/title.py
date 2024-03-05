@@ -10,7 +10,7 @@ class TitleAnimation(Slide):
         paper_title_sub = Tex("in", font_size=52)
         paper_title_sub2 = Tex("Artificial Neural Networks", font_size=52)
         title = VGroup(paper_title, paper_title_sub, paper_title_sub2).arrange(DOWN, buff=0.5)
-        title.move_to(point_or_mobject=ORIGIN)
+        title.move_to(point_or_mobject=ORIGIN).shift(UP)
 
         top_authors = (
             VGroup(*[Tex(x, font_size=40) for x in (r"\textit{Luca Moschella}",)]).to_corner(DL).set_opacity(0.9)
@@ -42,7 +42,7 @@ class TitleAnimation(Slide):
         logos = Group(gladialogo, sapienzalogo, ista_logo, iclr_logo, neurips_logo).arrange(RIGHT, buff=0.4)
         logos = logos.to_corner(DR)
 
-        logos = Group(logos, SurroundingRectangle(logos, buff=0.1, color=BLACK, stroke_width=1).set_opacity(0.5))
+        logos = Group(logos, SurroundingRectangle(logos, buff=0.1, color=BLACK, stroke_width=1).set_opacity(0.25))
         # authors_group = Group(top_authors, other_authors, Group(sapienzalogo, iclr_logo, gladialogo))
 
         self.play(

@@ -111,29 +111,24 @@ class BootstrappingResults(Slide):
         number.next_to(label3, RIGHT)
 
         self.play(
-            Create(fix_axis),
-            Create(opt_axis),
-            Create(label1),
-            Create(label2),
-        )
-
-        self.wait(0.1)
-        self.next_slide()
-
-        self.play(AnimationGroup(FadeIn(label3), FadeIn(number)))
-
-        self.play(
+            AnimationGroup(
+                FadeIn(label3),
+                FadeIn(number),
+                Create(fix_axis),
+                Create(opt_axis),
+                Create(label1),
+                Create(label2),
+            ),
             AnimationGroup(
                 *(
                     AnimationGroup(
-                        Create(left_dot),
-                        Create(right_dot),
-                        lag_ratio=1,
+                        FadeIn(left_dot),
+                        FadeIn(right_dot),
                     )
                     for left_dot, right_dot in zip(fix_points, opt_points)
                 ),
-                lag_ratio=0.2,
-                run_time=2,
+                lag_ratio=0.1,
+                run_time=1,
             ),
         )
 
