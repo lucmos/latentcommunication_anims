@@ -6,12 +6,11 @@ import pandas as pd
 import torch
 from manim import *
 from manim_slides import Slide
-from matplotlib import pyplot as plt
 from powermanim.templates.reference import Reference
 from powermanim.templates.sectiontitle import SectionTitle
 from scipy.stats import ortho_group
 
-from latentcommunication_anims.slides.parallel_opt import ANCHORS_IDX, CHOSEN_SAMPLE, LEFT_RUN_ID, POINTS, RIGHT_RUN_ID
+from latentcommunication_anims.slides.parallel_opt import LEFT_RUN_ID, POINTS, RIGHT_RUN_ID
 from latentcommunication_anims.utils import TARGET_COLORS, get_run_opt, seed_everything
 
 dtype = torch.float32

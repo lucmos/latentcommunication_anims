@@ -3,8 +3,6 @@ from manim_slides import Slide
 from powermanim.layouts.arrangedbullets import Bullet
 from powermanim.templates.bulletlist import BulletList
 
-from nn_core.common import PROJECT_ROOT
-
 from latentcommunication_anims.utils import section_slide
 
 FONT_SIZE = 38

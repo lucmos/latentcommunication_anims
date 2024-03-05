@@ -59,7 +59,6 @@ class BootstrappingResults(Slide):
         return left_dots, left_anims
 
     def construct(self):
-
         fix_axis = Axes(
             x_range=[-1.5, 1.5, 0.5],
             y_range=[-1.5, 1.5, 0.5],

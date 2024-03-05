@@ -1,4 +1,3 @@
-from cycler import V
 from manim import *
 from manim_slides import Slide
 
@@ -13,7 +12,6 @@ REC_PATH = PROJECT_ROOT / "data" / "bridge" / "aes_stitching_qualitative.jpg"
 
 class BridgeResults(Slide):
     def construct(self):
-
         slidetitle = Tex("Reconstruction Performance").to_edge(UP)
 
         rec_image = ImageMobject(REC_PATH).scale(0.7)

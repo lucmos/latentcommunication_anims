@@ -1,6 +1,5 @@
 from manim import *
 from manim_slides import Slide
-from regex import F
 
 from nn_core.common import PROJECT_ROOT
 

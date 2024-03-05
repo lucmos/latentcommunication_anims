@@ -1,24 +1,13 @@
-import itertools
-import random
 from pathlib import Path
 from typing import *
 
 import pandas as pd
-from altair import Self
 from manim import *
-from manim.mobject.geometry.line import Arrow
-from manim.mobject.geometry.polygram import Polygon
 from manim_slides import Slide
-from powermanim.layouts.arrangedbullets import Bullet, MathBullet
-from powermanim.templates.bulletlist import BulletList
 from powermanim.templates.reference import Reference
 from powermanim.templates.sectiontitle import SectionTitle
-from torchvision.datasets import MNIST
 
 from nn_core.common import PROJECT_ROOT
-
-from latentcommunication_anims.slides.parallel_opt import ANCHORS_IDX, CHOSEN_SAMPLE, LEFT_RUN_ID, POINTS, RIGHT_RUN_ID
-from latentcommunication_anims.utils import TARGET_COLORS, get_run_opt, section_slide, seed_everything
 
 folder_path: Path = PROJECT_ROOT / "data" / "bootstrapping" / "csv"
 IDS = [13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29]

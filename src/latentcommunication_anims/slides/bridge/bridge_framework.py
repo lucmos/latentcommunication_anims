@@ -5,7 +5,6 @@ from manim import *
 from manim.mobject.geometry.line import Arrow
 from manim.mobject.geometry.polygram import Polygon
 from manim_slides import Slide
-from regex import F
 
 from latentcommunication_anims.utils import seed_everything
 

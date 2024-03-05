@@ -3,11 +3,6 @@ import itertools
 from manim import *
 from manim_slides import Slide
 from powermanim.components.invariance import Invariance
-from pytorch_lightning import seed_everything
-
-from nn_core.common import PROJECT_ROOT
-
-from latentcommunication_anims.utils import section_slide
 
 
 def ncycles(iterable, n):
@@ -18,7 +13,6 @@ def ncycles(iterable, n):
 
 class AnglePreserving(Slide):
     def construct(self):
-
         question = Tex(
             r"Can we model how these\\[1.5ex] ",
             "distinct latent spaces",

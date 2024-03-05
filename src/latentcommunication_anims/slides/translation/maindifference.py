@@ -1,8 +1,6 @@
 from manim import *
 from manim_slides import Slide
 
-from latentcommunication_anims.utils import section_slide
-
 _ABS_COLOR = TEAL_D
 _REL_COLOR = GOLD_D
 

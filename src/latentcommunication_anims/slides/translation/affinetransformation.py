@@ -1,5 +1,3 @@
-import itertools
-
 from manim import *
 from manim_slides import Slide
 from powermanim.components.invariance import Invariance
@@ -7,7 +5,6 @@ from powermanim.components.invariance import Invariance
 
 class AffineTransformation(Slide):
     def construct(self):
-
         question = Tex(
             "Here, we are assuming $\mathcal{T}$ to be at most ",
             r"\emph{affine}",
