@@ -193,9 +193,10 @@ class BridgeProblem(Slide):
 
         question = (
             VGroup(
-                Tex("Challenging to find the", font_size=FONT_SIZE),
-                Tex("transformations class {{ $\mathbb{T}$ }} that", font_size=FONT_SIZE),
-                Tex("connects the two latent spaces!", font_size=FONT_SIZE),
+                Tex("Challenge", font_size=int(FONT_SIZE * 1.25)),
+                Tex("determine a priori the", font_size=FONT_SIZE),
+                Tex("transformations class {{ $\mathbb{T}$ }}", font_size=FONT_SIZE),
+                Tex("connecting latent spaces!", font_size=FONT_SIZE),
             )
             .arrange(DOWN)
             .shift(RIGHT * 3.5)
