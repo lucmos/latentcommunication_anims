@@ -37,8 +37,8 @@ manim src/latentcommunication_anims/slides/limitations.py Limitations
 manim src/latentcommunication_anims/slides/bridge/bridge_problem.py BridgeProblem
 manim src/latentcommunication_anims/slides/bridge/bridge_framework.py BridgeFramework
 manim src/latentcommunication_anims/slides/bridge/results.py BridgeResults
-manim src/latentcommunication_anims/slides/bridge/bootstrapping_intro.py BootstrappingIntro
-manim src/latentcommunication_anims/slides/bridge/bootstrapping_results.py BootstrappingResults
+manim src/latentcommunication_anims/slides/bootstrap/bootstrapping_intro.py BootstrappingIntro
+manim src/latentcommunication_anims/slides/bootstrap/bootstrapping_results.py BootstrappingResults
 
 # Applications
 manim src/latentcommunication_anims/slides/applying.py Applying
