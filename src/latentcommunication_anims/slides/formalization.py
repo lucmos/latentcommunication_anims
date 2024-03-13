@@ -1,11 +1,10 @@
 import typing as tp
+from functools import partial
 from math import copysign
 
 from manim import *
 from manim_slides import Slide
-from powermanim.components.directionalarrow import DirectionalArrow
-from powermanim.layouts.arrangedbullets import Bullet
-from powermanim.templates.bulletlist import BulletList
+from powermanim import AutoActivable, Bullet, BulletList, DirectionalArrow, VGroupActivable
 
 from latentcommunication_anims.utils import section_slide
 
@@ -312,25 +311,110 @@ class Formalization(Slide):
             }
         )
 
-        all_elements = VGroup(
-            formalization,
+        INACTIVE = 0
+
+        shape_highlightable = partial(
+            AutoActivable,
+            scale_active=None,
+            active_fill_opacity=None,
+            inactive_fill_opacity=None,
+            active_stroke_opacity=1.0,
+            inactive_stroke_opacity=INACTIVE,
+        )
+        label_highlightable = partial(
+            AutoActivable,
+            scale_active=None,
+            active_fill_opacity=1.0,
+            inactive_fill_opacity=INACTIVE,
+            active_stroke_opacity=1.0,
+            inactive_stroke_opacity=INACTIVE,
+        )
+
+        all_elements = VGroupActivable(
+            label_highlightable(inputspaces_label, group=0),
+            label_highlightable(x_pipeline["input"]["label"], group=0),
+            shape_highlightable(x_pipeline["input"]["space"], group=0),
+            label_highlightable(y_pipeline["input"]["label"], group=0),
+            shape_highlightable(y_pipeline["input"]["space"], group=0),
+            #
+            label_highlightable(manifold_x, group=1),
+            label_highlightable(manifold_y, group=1),
+            #
+            label_highlightable(phix, group=2),
+            label_highlightable(phiy, group=2),
+            shape_highlightable(x_pipeline["input"]["embedding"], group=2),
+            shape_highlightable(y_pipeline["input"]["embedding"], group=2),
+            #
+            label_highlightable(abstract_correspondence, group=3),
+            label_highlightable(pi_correspondence, group=4),
+            #
+            #
+            label_highlightable(encoder_x, group=5),
+            label_highlightable(encoder_y, group=5),
+            #
+            label_highlightable(latentspaces_label, group=6),
+            label_highlightable(x_pipeline["latent"]["label"], group=6),
+            shape_highlightable(x_pipeline["latent"]["space"], group=6),
+            label_highlightable(y_pipeline["latent"]["label"], group=6),
+            shape_highlightable(y_pipeline["latent"]["space"], group=6),
+            #
+            shape_highlightable(x_pipeline["latent"]["embedding"], group=7),
+            shape_highlightable(y_pipeline["latent"]["embedding"], group=7),
+            #
+            label_highlightable(transformation, group=8),
+            #
+            label_highlightable(t_x, group=9),
+            label_highlightable(t_y, group=9),
+            #
+            label_highlightable(universalspaces_label, group=10),
+            label_highlightable(y_pipeline["universal"]["label"], group=10),
+            label_highlightable(x_pipeline["universal"]["label"], group=10),
+            shape_highlightable(x_pipeline["universal"]["space"], group=10),
+            shape_highlightable(y_pipeline["universal"]["space"], group=10),
+            #
+            shape_highlightable(x_pipeline["universal"]["embedding"], group=11),
+            shape_highlightable(y_pipeline["universal"]["embedding"], group=11),
+            #
+            label_highlightable(aligned, group=12),
+            #
+            shape_highlightable(universal_space["rec"], group=13),
+            label_highlightable(universal_space["label"], group=13),
+        ).move_to(ORIGIN)
+
+        a = VGroup(
+            inputspaces_label,
+            x_pipeline["input"]["label"],
+            x_pipeline["input"]["space"],
+            y_pipeline["input"]["label"],
+            y_pipeline["input"]["space"],
             manifold_x,
             manifold_y,
             phix,
             phiy,
-            inputspaces_label,
-            latentspaces_label,
-            universalspaces_label,
-            encoder_x,
-            encoder_y,
-            t_x,
-            t_y,
+            x_pipeline["input"]["embedding"],
+            y_pipeline["input"]["embedding"],
             abstract_correspondence,
             pi_correspondence,
+            encoder_x,
+            encoder_y,
+            latentspaces_label,
+            x_pipeline["latent"]["label"],
+            x_pipeline["latent"]["space"],
+            y_pipeline["latent"]["label"],
+            y_pipeline["latent"]["space"],
+            x_pipeline["latent"]["embedding"],
+            y_pipeline["latent"]["embedding"],
             transformation,
-            aligned,
-            universal_space,
         ).move_to(ORIGIN)
 
-        self.add(all_elements)
+        self.add(all_elements.align_to(a, LEFT))
+
+        for _ in range(9):
+            self.play(all_elements.also_next())
+
+        self.play(all_elements.animate.move_to(ORIGIN))
+
+        for _ in range(all_elements.ngroups - 8):
+            self.play(all_elements.also_next())
+
         self.wait()
