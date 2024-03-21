@@ -379,6 +379,7 @@ class Formalization(Slide):
             #
             shape_highlightable(universal_space["rec"], group=13),
             label_highlightable(universal_space["label"], group=13),
+            anim_lag_ratio=0.25,
         ).move_to(ORIGIN)
 
         a = VGroup(
@@ -416,5 +417,3 @@ class Formalization(Slide):
 
         for _ in range(all_elements.ngroups - 8):
             self.play(all_elements.also_next())
-
-        self.wait()
