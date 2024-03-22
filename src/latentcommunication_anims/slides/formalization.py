@@ -422,7 +422,7 @@ class Formalization(Slide):
 
         section_slide(self, section_title=r"The Latent Communication\\Problem")
 
-        general_problem = Tex(r"Searching an Universal Space or a Direct Translation")
+        general_problem = Tex(r"Searching for a Universal Space or a Direct Translation")
         general_problem2 = Tex(r"are instances of the same \textbf{general} problem!").next_to(
             general_problem, DOWN, buff=MED_LARGE_BUFF * 2
         )
