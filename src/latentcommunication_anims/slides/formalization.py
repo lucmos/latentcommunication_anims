@@ -3,8 +3,9 @@ from functools import partial
 from math import copysign
 
 from manim import *
-from manim_slides import Slide
+from manim_slides.slide import Slide
 from powermanim import AutoActivable, Bullet, BulletList, DirectionalArrow, VGroupActivable
+from powermanim.templates.sectiontitle import Color
 
 from latentcommunication_anims.utils import section_slide
 
@@ -21,19 +22,27 @@ LABEL_SCALE = 0.8
 
 LABEL_BUFF = 0.075
 
+FONT_SIZE = 38
 
+
+def _set_tex_colors(texobj: MathTex, indices: tp.Sequence[int], color: Color):
+    for i in indices:
+        texobj[i].set_color(color)
+
+
+# class Formalization(Scene):
 class Formalization(Slide):
 
     def build_ambient_space(
         self,
-        label: str,
+        label_text: tp.Sequence[str],
         inner_manifold: VMobject,
         manifold_embedding_y_shift,
         color,
         size=2.5,
     ):
-        if isinstance(label, str):
-            label = (label,)
+        if isinstance(label_text, str):
+            label_text = (label_text,)
 
         shift_direction = UP * copysign(1, manifold_embedding_y_shift)
         ambient_space = Square(side_length=size, stroke_color=LIGHTER_GREY)
@@ -46,18 +55,20 @@ class Formalization(Slide):
             UP * manifold_embedding_y_shift,
         )
         inner_manifold.shift(
-            [
-                (inner_manifold.get_width() / 2)
-                + abs(
-                    ambient_space.get_critical_point(direction=shift_direction)[1]
-                    - inner_manifold.get_critical_point(direction=shift_direction)[1]
-                ),
-                0,
-                0,
-            ]
+            np.asarray(
+                [
+                    (inner_manifold.get_width() / 2)
+                    + abs(
+                        ambient_space.get_critical_point(direction=shift_direction)[1]
+                        - inner_manifold.get_critical_point(direction=shift_direction)[1]
+                    ),
+                    0,
+                    0,
+                ]
+            )
         )
 
-        label = MathTex(*label)
+        label = MathTex(*label_text)
         if len(label) == 1:
             label.set_color(color)
         else:
@@ -65,51 +76,50 @@ class Formalization(Slide):
 
         midpoint = (
             ambient_space.get_critical_point(-shift_direction) + inner_manifold.get_critical_point(-shift_direction)
-        ) / 2
+        ) / np.asarray(2)
         label.move_to((ambient_space.get_center()[0], midpoint[1], 0))
 
         return VDict({"label": label, "space": ambient_space, "embedding": inner_manifold})
 
     def construct(self) -> None:
-        # section_slide(self, section_title=r"The Latent Communication\\Problem")
 
         input_space_x = self.build_ambient_space(
-            label="X",
+            label_text="X",
             inner_manifold=RegularPolygon(5),
             manifold_embedding_y_shift=MANIFOLD_EMBEDDING_Y_SHIFT,
             color=X_COLOR,
         )
 
         input_space_y = self.build_ambient_space(
-            label="Y",
+            label_text="Y",
             inner_manifold=DashedVMobject(RegularPolygon(5)),
             manifold_embedding_y_shift=-MANIFOLD_EMBEDDING_Y_SHIFT,
             color=Y_COLOR,
         )
 
         latent_space_x = self.build_ambient_space(
-            label="\widetilde{X}",
+            label_text=r"\widetilde{X}",
             inner_manifold=(RegularPolygon(7)),
             manifold_embedding_y_shift=MANIFOLD_EMBEDDING_Y_SHIFT,
             color=X_COLOR,
         )
 
         latent_space_y = self.build_ambient_space(
-            label="\widetilde{Y}",
+            label_text=r"\widetilde{Y}",
             inner_manifold=DashedVMobject(RegularPolygon(7)),
             manifold_embedding_y_shift=-MANIFOLD_EMBEDDING_Y_SHIFT,
             color=Y_COLOR,
         )
 
         universal_space_x = self.build_ambient_space(
-            label=("U_", "{X}"),
+            label_text=("U_", "{X}"),
             inner_manifold=(RegularPolygon(16)),
             manifold_embedding_y_shift=MANIFOLD_EMBEDDING_Y_SHIFT,
             color=X_COLOR,
         )
 
         universal_space_y = self.build_ambient_space(
-            label=("U_", "{Y}"),
+            label_text=("U_", "{Y}"),
             inner_manifold=DashedVMobject(RegularPolygon(16)),
             manifold_embedding_y_shift=-MANIFOLD_EMBEDDING_Y_SHIFT,
             color=Y_COLOR,
@@ -408,12 +418,194 @@ class Formalization(Slide):
             transformation,
         ).move_to(ORIGIN)
 
-        self.add(all_elements.align_to(a, LEFT))
+        # ----------- START ANIMATIONS
 
+        section_slide(self, section_title=r"The Latent Communication\\Problem")
+
+        general_problem = Tex(r"Searching an Universal Space or a Direct Translation")
+        general_problem2 = Tex(r"are instances of the same \textbf{general} problem!").next_to(
+            general_problem, DOWN, buff=MED_LARGE_BUFF * 2
+        )
+        VGroup(general_problem, general_problem2).move_to(ORIGIN)
+        self.play(AnimationGroup(FadeIn(general_problem), FadeIn(general_problem2), lag_ratio=0.5))
+        self.wait(0.1)
+        self.next_slide()
+
+        framework_intro = Tex("Consider the following setting")
+        self.play(FadeOut(general_problem, general_problem2))
+        self.play(Create(framework_intro))
+        self.wait(0.1)
+        self.next_slide()
+
+        self.play(
+            FadeOut(framework_intro),
+            FadeIn(all_elements.align_to(a, LEFT)),
+        )
         for _ in range(9):
             self.play(all_elements.also_next())
+            self.wait(0.1)
+            self.next_slide()
 
         self.play(all_elements.animate.move_to(ORIGIN))
 
-        for _ in range(all_elements.ngroups - 8):
+        for _ in range(all_elements.ngroups - 8 - 1):
             self.play(all_elements.also_next())
+            self.wait(0.1)
+            self.next_slide()
+
+        formalization_title = Tex("Latent Communication Problem").to_edge(UP)
+
+        self.play(FadeOut(all_elements))
+        self.play(FadeIn(formalization_title))
+
+        problemfind = MathTex(
+            r"T_{",  # 0
+            r"X",  # 1
+            r"}: ",  # 2
+            r"\widetilde{X}",  # 3
+            r"\to",  # 4
+            r"\mathcal{L}(U_{",  # 5
+            r"X",  # 6
+            r"})",  # 7
+            r" \quad \text{ and } \quad ",  # 8
+            r"T_{",  # 9
+            r"Y",  # 10
+            r"}:",  # 11
+            r"\widetilde{Y}",  # 12
+            r"\to",  # 13
+            r"\mathcal{L}(U_{",  # 14
+            r"Y",  # 15
+            r"})",  # 16
+        )
+        _set_tex_colors(texobj=problemfind, indices=(1, 3, 6), color=X_COLOR)
+        _set_tex_colors(texobj=problemfind, indices=(10, 12, 15), color=Y_COLOR)
+
+        problemloss = MathTex(
+            r"\forall (",  # 0
+            r"x",  # 1
+            r", ",  # 2
+            r"y",  # 3
+            r") \in C, ",  # 4
+            r"\quad ",  # 5
+            r"T_{",  # 6
+            r"X",  # 7
+            r"}(E_",  # 8
+            r"X",  # 9
+            r"(\varphi_{",  # 10
+            r"X",  # 11
+            r"}(",  # 12
+            r"x",  # 13
+            r")))",  # 14
+            r" = ",  # 15
+            r"T_{",  # 16
+            r"Y",  # 17
+            r"}(E_",  # 18
+            r"Y",  # 19
+            r"(\varphi_{",  # 20
+            r"Y",  # 21
+            r"}(",  # 22
+            r"y",  # 23
+            r")))",  # 24
+            r" \subseteq{U}",  # 25
+        )
+        _set_tex_colors(texobj=problemloss, indices=(1, 7, 9, 11, 13), color=X_COLOR)
+        _set_tex_colors(texobj=problemloss, indices=(3, 17, 19, 21, 23), color=Y_COLOR)
+        st = Tex("such that")
+        constraint = MathTex(
+            r"\mathcal{L}(",  # 0
+            r"\widetilde{X}",  # 1
+            r")",  # 2
+            " = ",  # 3
+            r"\mathcal{L}(U_{",  # 4
+            r"X",  # 5
+            r"})",  # 6
+            r" \quad\text{ and }\quad ",  # 7
+            r"\mathcal{L}(",  # 8
+            r"\widetilde{Y}",  # 9
+            r")",  # 10
+            " = ",  # 11
+            r"\mathcal{L}(U_{",  # 12
+            r"Y",  # 13
+            r"})",  # 14
+        )
+        _set_tex_colors(texobj=constraint, indices=(1, 5), color=X_COLOR)
+        _set_tex_colors(texobj=constraint, indices=(9, 13), color=Y_COLOR)
+        clarification = Tex(r"where $\mathcal{L}$ is the minimum achievable loss, by any model")
+        statement = (
+            VGroup(problemfind, problemloss, st, constraint, clarification).arrange(DOWN, buff=0.5).move_to(ORIGIN)
+        )
+        clarification.shift(DOWN)
+        self.play(FadeIn(statement))
+        self.wait()
+        self.next_slide()
+
+        intuitiontitle = Tex("Intuition").to_edge(UP)
+        intuition = Tex("Searching for transformations of the latent ambient spaces")
+        intuition2 = Tex("that implicitly align the manifolds embedded in them")
+        intutiongroup = VGroup(intuition, intuition2).arrange(DOWN, buff=1).move_to(ORIGIN)
+        self.play(
+            AnimationGroup(
+                AnimationGroup(
+                    AnimationGroup(FadeOut(statement), FadeOut(formalization_title)),
+                    FadeIn(intuitiontitle),
+                    lag_ratio=0.5,
+                ),
+                FadeIn(intuition),
+                FadeIn(intuition2),
+                lag_ratio=0.5,
+            )
+        )
+
+        self.wait(0.5)
+        self.next_slide()
+
+        corollaryproblems = Tex("Corollary Problems").to_edge(UP)
+
+        bulletlist = (
+            BulletList(
+                Bullet("Zero-Shot Stitching", font_size=FONT_SIZE, level=0),
+                Bullet("Reuse neural components without finetuning", font_size=FONT_SIZE, level=1, symbol=""),
+                Bullet("Latent Model Evaluation", font_size=FONT_SIZE, level=0),
+                Bullet(
+                    "Measure downstream performance latently, without labeled data",
+                    font_size=FONT_SIZE,
+                    level=1,
+                    symbol="",
+                ),
+                Bullet(r"Retrieval", font_size=FONT_SIZE, level=0),
+                Bullet(
+                    "Retrieve data points from one space using queries from another",
+                    font_size=FONT_SIZE,
+                    level=1,
+                    symbol="",
+                ),
+                line_spacing=MED_LARGE_BUFF,
+                scale_active=1.025,
+                inactive_opacity=0.35,
+            )
+            .move_to(ORIGIN)
+            .to_edge(LEFT)
+            .shift(DOWN * 0.25)
+        )
+
+        self.play(
+            AnimationGroup(
+                AnimationGroup(
+                    AnimationGroup(FadeOut(intutiongroup), FadeOut(intuitiontitle)),
+                    FadeIn(corollaryproblems),
+                    lag_ratio=0.5,
+                ),
+                FadeIn(bulletlist),
+                lag_ratio=0.5,
+            )
+        )
+        self.wait(0.5)
+        self.next_slide()
+
+        for i in range(bulletlist.ngroups):
+            self.play(bulletlist.also_next())
+            self.wait(0.1)
+            self.next_slide(auto_next=i == bulletlist.ngroups - 1)
+
+        self.play(FadeOut(bulletlist), FadeOut(corollaryproblems))
+        self.wait(0.1)
