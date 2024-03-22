@@ -567,7 +567,7 @@ class Formalization(Slide):
                 Bullet("Reuse neural components without finetuning", font_size=FONT_SIZE, level=1, symbol=""),
                 Bullet("Latent Model Evaluation", font_size=FONT_SIZE, level=0),
                 Bullet(
-                    "Measure downstream performance latently, without labeled data",
+                    "Measure models performance implicitly in the latent space",
                     font_size=FONT_SIZE,
                     level=1,
                     symbol="",
