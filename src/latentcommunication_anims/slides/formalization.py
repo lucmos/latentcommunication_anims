@@ -474,7 +474,7 @@ class Formalization(Slide):
             r"\to",  # 13
             r"U_{",  # 14
             r"Y",  # 15
-            r"} \quad \text{s.t.}",  # 16
+            r"}",  # 16
         )
         _set_tex_colors(texobj=problemfind, indices=(1, 3, 6), color=X_COLOR)
         _set_tex_colors(texobj=problemfind, indices=(10, 12, 15), color=Y_COLOR)
