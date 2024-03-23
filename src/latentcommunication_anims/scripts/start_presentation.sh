@@ -22,8 +22,8 @@ manim-slides present \
     TranslationStitching \
     TranslationCrossmodal \
     TranslationOtherResults \
-    Intuition \
-    Correspondence \
+    Formalization \
+    Correspondence 
     Limitations \
     BridgeProblem \
     BridgeFramework \
@@ -36,4 +36,6 @@ manim-slides present \
     Conclusions \
     FutureWorks \
     Unireps \
-    Thanks
+    Thanks \
+
+    # Intuition \

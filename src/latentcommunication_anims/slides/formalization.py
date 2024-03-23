@@ -456,26 +456,25 @@ class Formalization(Slide):
         formalization_title = Tex("Latent Communication Problem").to_edge(UP)
 
         self.play(FadeOut(all_elements))
-        self.play(FadeIn(formalization_title))
 
         problemfind = MathTex(
-            r"T_{",  # 0
+            r"\text{Search} \quad T_{",  # 0
             r"X",  # 1
             r"}: ",  # 2
             r"\widetilde{X}",  # 3
             r"\to",  # 4
-            r"\mathcal{L}(U_{",  # 5
+            r"U_{",  # 5
             r"X",  # 6
-            r"})",  # 7
+            r"}",  # 7
             r" \quad \text{ and } \quad ",  # 8
             r"T_{",  # 9
             r"Y",  # 10
             r"}:",  # 11
             r"\widetilde{Y}",  # 12
             r"\to",  # 13
-            r"\mathcal{L}(U_{",  # 14
+            r"U_{",  # 14
             r"Y",  # 15
-            r"})",  # 16
+            r"} \quad \text{s.t.}",  # 16
         )
         _set_tex_colors(texobj=problemfind, indices=(1, 3, 6), color=X_COLOR)
         _set_tex_colors(texobj=problemfind, indices=(10, 12, 15), color=Y_COLOR)
@@ -535,11 +534,17 @@ class Formalization(Slide):
             VGroup(problemfind, problemloss, st, constraint, clarification).arrange(DOWN, buff=0.5).move_to(ORIGIN)
         )
         clarification.shift(DOWN)
-        self.play(FadeIn(statement))
+        self.play(
+            AnimationGroup(
+                FadeIn(formalization_title),
+                FadeIn(statement),
+                lag_ratio=0.5,
+            ),
+        )
         self.wait()
         self.next_slide()
 
-        intuitiontitle = Tex("Intuition").to_edge(UP)
+        intuitiontitle = Tex("Essentially").to_edge(UP)
         intuition = Tex("Searching for transformations of the latent ambient spaces")
         intuition2 = Tex("that implicitly align the manifolds embedded in them")
         intutiongroup = VGroup(intuition, intuition2).arrange(DOWN, buff=1).move_to(ORIGIN)
