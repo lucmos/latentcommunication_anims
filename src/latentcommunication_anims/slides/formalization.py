@@ -4,7 +4,7 @@ from math import copysign
 
 from manim import *
 from manim_slides.slide import Slide
-from powermanim import AutoActivable, Bullet, BulletList, DirectionalArrow, VGroupActivable
+from powermanim import Bullet, BulletList, DirectionalArrow, GroupActivable, VAutoActivable
 from powermanim.templates.sectiontitle import Color
 
 from latentcommunication_anims.utils import section_slide
@@ -324,7 +324,7 @@ class Formalization(Slide):
         INACTIVE = 0
 
         shape_highlightable = partial(
-            AutoActivable,
+            VAutoActivable,
             scale_active=None,
             active_fill_opacity=None,
             inactive_fill_opacity=None,
@@ -332,7 +332,7 @@ class Formalization(Slide):
             inactive_stroke_opacity=INACTIVE,
         )
         label_highlightable = partial(
-            AutoActivable,
+            VAutoActivable,
             scale_active=None,
             active_fill_opacity=1.0,
             inactive_fill_opacity=INACTIVE,
@@ -340,7 +340,7 @@ class Formalization(Slide):
             inactive_stroke_opacity=INACTIVE,
         )
 
-        all_elements = VGroupActivable(
+        all_elements = GroupActivable(
             label_highlightable(inputspaces_label, group=0),
             label_highlightable(x_pipeline["input"]["label"], group=0),
             shape_highlightable(x_pipeline["input"]["space"], group=0),

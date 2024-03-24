@@ -1,5 +1,9 @@
+import typing as T
+from functools import partial
+
 from manim import *
-from manim_slides import Slide
+from manim_slides.slide import Slide
+from powermanim import GroupActivable, ImageAutoActivable, VActivable, VAutoActivable
 
 from nn_core.common import PROJECT_ROOT
 
@@ -20,7 +24,8 @@ KAK_IMG = PROJECT_ROOT / "data" / "assets" / "kakapo.jpg"
 
 class Correspondence(Slide):
     def construct(self):
-        section_slide(self, "Semantic Correspondence")
+        # section_slide(self, "Semantic Correspondence")
+        slide_title = Tex("Intuition").to_edge(UP)
 
         left_space = Tex("Latent Space 1", font_size=FONT_SIZE).to_edge(UP)
         left_e = Ellipse(width=2.5, height=4.5, color=WHITE)
@@ -29,119 +34,53 @@ class Correspondence(Slide):
 
         right_space = Tex("Latent Space 2", font_size=FONT_SIZE).to_corner(UR, buff=LARGE_BUFF)
         right_e = Ellipse(width=2.5, height=4.5, color=WHITE).next_to(right_space, DOWN, buff=MED_LARGE_BUFF)
-        self.play(
-            Create(right_e),
-            Create(right_space),
-            Create(left_space),
-            Create(left_e),
-        )
-
-        self.wait(0.1)
-        self.next_slide()
-
         leftdots = [
-            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([-5, 1.5, 0]),
-            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([-4.5, -1, 0]),
-            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([-4.75, -2, 0]),
+            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([-5, 1.5, 0]),  # type: ignore
+            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([-4.5, -1, 0]),  # type: ignore
+            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([-4.75, -2, 0]),  # type: ignore
         ]
         rightdots = [
-            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([4, 1, 0]),
-            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([5, 0, 0]),
-            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([5.5, -1, 0]),
+            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([4, 1, 0]),  # type: ignore
+            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([5, 0, 0]),  # type: ignore
+            Star(color=WHITE, fill_opacity=0.5, outer_radius=0.1, z_index=2).move_to([5.5, -1, 0]),  # type: ignore
         ]
-
-        self.play(
-            AnimationGroup(
-                *[AnimationGroup(Create(dot1), Create(dot2)) for dot1, dot2 in zip(leftdots, rightdots)],
-                lag_ratio=0.5,
-            )
-        )
-
-        self.wait(0.1)
-        self.next_slide()
 
         arc0 = ArcBetweenPoints(
             leftdots[0].get_center(),
             rightdots[0].get_center(),
             angle=-TAU / 8,
             stroke_width=3,
-        ).set_color([CORRESPONDENCE_COLOR[0], BLACK, BLACK, CORRESPONDENCE_COLOR[0]])
+        ).set_color(
+            [CORRESPONDENCE_COLOR[0], BLACK, BLACK, CORRESPONDENCE_COLOR[0]]  # type: ignore
+        )
 
         arc1 = ArcBetweenPoints(
             leftdots[1].get_center(),
             rightdots[1].get_center(),
             angle=-TAU / 16,
             stroke_width=3,
-        ).set_color([CORRESPONDENCE_COLOR[1], BLACK, BLACK, CORRESPONDENCE_COLOR[1]])
+        ).set_color(
+            [CORRESPONDENCE_COLOR[1], BLACK, BLACK, CORRESPONDENCE_COLOR[1]]  # type: ignore
+        )
 
         arc2 = ArcBetweenPoints(
             leftdots[2].get_center(),
             rightdots[2].get_center(),
             angle=TAU / 32,
             stroke_width=3,
-        ).set_color([CORRESPONDENCE_COLOR[2], BLACK, BLACK, CORRESPONDENCE_COLOR[2]])
-
-        img0 = ImageMobject(CAT_IMG).scale(0.05).next_to(arc0, ORIGIN, buff=0).shift(0.85 * UP)
-        img1 = ImageMobject(ELE_IMG).scale(0.225).next_to(arc1, ORIGIN, buff=0).shift(0.4 * UP)
-        img2 = ImageMobject(KAK_IMG).scale(0.15).next_to(arc2, ORIGIN, buff=0).shift(0.45 * DOWN)
-
-        self.play(
-            AnimationGroup(
-                AnimationGroup(
-                    AnimationGroup(
-                        GrowFromPoint(arc0, point=img0.get_center()),
-                        GrowFromPoint(img0, point=img0.get_center()),
-                    ),
-                    AnimationGroup(
-                        leftdots[0].animate.set_color(CORRESPONDENCE_COLOR[0]),
-                        rightdots[0].animate.set_color(CORRESPONDENCE_COLOR[0]),
-                    ),
-                    lag_ratio=0.5,
-                ),
-                AnimationGroup(
-                    AnimationGroup(
-                        GrowFromPoint(arc1, point=img1.get_center()),
-                        GrowFromPoint(img1, point=img1.get_center()),
-                    ),
-                    AnimationGroup(
-                        leftdots[1].animate.set_color(CORRESPONDENCE_COLOR[1]),
-                        rightdots[1].animate.set_color(CORRESPONDENCE_COLOR[1]),
-                    ),
-                    lag_ratio=0.5,
-                ),
-                AnimationGroup(
-                    AnimationGroup(
-                        GrowFromPoint(arc2, point=img2.get_center()),
-                        GrowFromPoint(img2, point=img2.get_center()),
-                    ),
-                    AnimationGroup(
-                        leftdots[2].animate.set_color(CORRESPONDENCE_COLOR[2]),
-                        rightdots[2].animate.set_color(CORRESPONDENCE_COLOR[2]),
-                    ),
-                    lag_ratio=0.5,
-                ),
-                lag_ratio=0.7,
-            ),
-            run_time=4,
+        ).set_color(
+            [CORRESPONDENCE_COLOR[2], BLACK, BLACK, CORRESPONDENCE_COLOR[2]]  # type: ignore
         )
+
+        img0 = ImageMobject(CAT_IMG, z_index=10).scale(0.05).next_to(arc0, ORIGIN, buff=0).shift(0.85 * UP)
+        img1 = ImageMobject(ELE_IMG, z_index=10).scale(0.225).next_to(arc1, ORIGIN, buff=0).shift(0.4 * UP)
+        img2 = ImageMobject(KAK_IMG, z_index=10).scale(0.15).next_to(arc2, ORIGIN, buff=0).shift(0.45 * DOWN)
 
         partial_correspondence = (
-            Tex("A partial semantic correspondence!", font_size=FONT_SIZE).to_edge(DOWN).set_opacity(0.9)
+            Tex("$C$ establishes a semantic correspondence!", font_size=FONT_SIZE).to_edge(DOWN).set_opacity(0.9)
         )
-        self.play(Create(partial_correspondence))
-
-        self.wait(0.1)
-        self.next_slide()
-
         left_sample = Dot(color=WHITE, z_index=2).move_to([-5, 0, 0])
         right_sample = Dot(color=WHITE, z_index=2).move_to([5.5, 0.5, 0])
-        self.play(
-            Create(left_sample),
-            Create(right_sample),
-        )
-
-        self.wait(0.1)
-        self.next_slide()
 
         lines0 = VGroup(
             DashedLine(
@@ -188,68 +127,72 @@ class Correspondence(Slide):
             ),
         ).set_opacity(0.5)
 
-        self.play(
-            GrowFromPoint(lines0[0], point_color=CORRESPONDENCE_COLOR[0], point=left_sample.get_center()),
-            GrowFromPoint(lines0[1], point_color=CORRESPONDENCE_COLOR[0], point=right_sample.get_center()),
+        INACTIVE = 0.15
+
+        image_highlightable = partial(
+            ImageAutoActivable,
+            scale_active=None,
+            active_opacity=1,
+            inactive_opacity=INACTIVE,
+            activation_anim_run_time=0.5,
+            deactivation_anim_run_time=0.5,
         )
-
-        self.wait(0.1)
-        self.next_slide()
-
-        self.play(
-            AnimationGroup(
-                AnimationGroup(
-                    GrowFromPoint(lines1[0], point_color=CORRESPONDENCE_COLOR[1], point=left_sample.get_center()),
-                    GrowFromPoint(lines1[1], point_color=CORRESPONDENCE_COLOR[1], point=right_sample.get_center()),
-                ),
-                AnimationGroup(
-                    GrowFromPoint(lines2[0], point_color=CORRESPONDENCE_COLOR[2], point=left_sample.get_center()),
-                    GrowFromPoint(lines2[1], point_color=CORRESPONDENCE_COLOR[2], point=right_sample.get_center()),
-                ),
-                lag_ratio=0.5,
+        label_highlightable = partial(
+            VAutoActivable,
+            scale_active=None,
+            active_fill_opacity=1.0,
+            inactive_fill_opacity=INACTIVE,
+            active_stroke_opacity=1.0,
+            inactive_stroke_opacity=INACTIVE,
+            activation_anim_run_time=0.5,
+            deactivation_anim_run_time=0.5,
+        )
+        shape_highlightable = partial(
+            VAutoActivable,
+            scale_active=None,
+            active_fill_opacity=0,
+            inactive_fill_opacity=0,
+            active_stroke_opacity=1.0,
+            inactive_stroke_opacity=INACTIVE,
+            activation_anim_run_time=0.5,
+            deactivation_anim_run_time=0.5,
+        )
+        diagram = GroupActivable(
+            label_highlightable(left_space, group=0),
+            shape_highlightable(left_e, group=0),
+            label_highlightable(right_space, group=0),
+            shape_highlightable(right_e, group=0),
+            label_highlightable(VGroup(*leftdots), group=1),
+            label_highlightable(VGroup(*rightdots), group=1),
+            shape_highlightable(arc0, group=2),
+            shape_highlightable(arc1, group=2),
+            shape_highlightable(arc2, group=2),
+            image_highlightable(img0, group=2),
+            image_highlightable(img1, group=2),
+            image_highlightable(img2, group=2),
+            VAutoActivable(
+                partial_correspondence,
+                group=3,
+                scale_active=None,
+                active_fill_opacity=1.0,
+                inactive_fill_opacity=0,
+                active_stroke_opacity=1.0,
+                inactive_stroke_opacity=0,
+                activation_anim_run_time=0.5,
+                deactivation_anim_run_time=0.5,
             ),
-            run_time=2,
-        )
+            label_highlightable(left_sample, group=4),
+            label_highlightable(right_sample, group=4),
+            label_highlightable(lines0, group=4),
+            label_highlightable(lines1, group=5),
+            label_highlightable(lines2, group=6),
+        ).scale(0.9)
 
-        self.wait(0.1)
-        self.next_slide(auto_next=True)
+        self.play(AnimationGroup(FadeIn(slide_title), FadeIn(diagram), lag_ratio=0.25))
 
-        self.play(
-            AnimationGroup(
-                Uncreate(partial_correspondence),
-                AnimationGroup(
-                    Uncreate(arc0),
-                    FadeOut(img0, run_time=0.5),
-                    Uncreate(lines0),
-                    lag_ratio=0.5,
-                ),
-                AnimationGroup(
-                    Uncreate(arc1),
-                    FadeOut(img1, run_time=0.5),
-                    Uncreate(lines1),
-                    lag_ratio=0.5,
-                ),
-                AnimationGroup(
-                    Uncreate(arc2),
-                    FadeOut(img2, run_time=0.5),
-                    Uncreate(lines2),
-                    lag_ratio=0.5,
-                ),
-                AnimationGroup(
-                    Uncreate(left_sample),
-                    Uncreate(right_sample),
-                ),
-                AnimationGroup(
-                    *(Uncreate(x) for x in leftdots),
-                    *(Uncreate(x) for x in rightdots),
-                ),
-                AnimationGroup(
-                    Uncreate(left_space),
-                    Uncreate(right_space),
-                    Uncreate(left_e),
-                    Uncreate(right_e),
-                ),
-                lag_ratio=0.1,
-            ),
-            run_time=2,
-        )
+        for i in range(diagram.ngroups):
+            self.play(diagram.also_next())
+            self.wait(0.1)
+            self.next_slide(auto_next=i == diagram.ngroups - 1)
+
+        self.play(FadeOut(diagram), FadeOut(slide_title))

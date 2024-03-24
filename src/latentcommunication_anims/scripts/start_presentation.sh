@@ -23,7 +23,7 @@ manim-slides present \
     TranslationCrossmodal \
     TranslationOtherResults \
     Formalization \
-    Correspondence 
+    Correspondence \
     Limitations \
     BridgeProblem \
     BridgeFramework \
