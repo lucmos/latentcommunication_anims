@@ -77,7 +77,9 @@ class Correspondence(Slide):
         img2 = ImageMobject(KAK_IMG, z_index=10).scale(0.15).next_to(arc2, ORIGIN, buff=0).shift(0.45 * DOWN)
 
         partial_correspondence = (
-            Tex("$C$ establishes a semantic correspondence!", font_size=FONT_SIZE).to_edge(DOWN).set_opacity(0.9)
+            Tex("$C$ induces an observable a semantic correspondence!", font_size=FONT_SIZE)
+            .to_edge(DOWN)
+            .set_opacity(0.9)
         )
         left_sample = Dot(color=WHITE, z_index=2).move_to([-5, 0, 0])
         right_sample = Dot(color=WHITE, z_index=2).move_to([5.5, 0.5, 0])
