@@ -336,8 +336,8 @@ class TranslationStitching(Slide):
                 rescale_to_fit=False,
             )
 
-            latent_equal = Tex("=", z_index=2).scale(2).rotate(PI / 2)
-            decoder_equal = Tex("=", z_index=2).scale(2).rotate(PI / 2)
+            latent_equal = Tex(r"$\approx$", z_index=2).scale(2).rotate(PI / 2)
+            decoder_equal = Tex(r"$\approx$", z_index=2).scale(2).rotate(PI / 2)
 
             latent_equal.add_updater(lambda m: m.move_to((latent1.get_center() + latent2.get_center()) / 2))
             decoder_equal.add_updater(
