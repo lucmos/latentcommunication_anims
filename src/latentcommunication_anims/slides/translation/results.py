@@ -71,7 +71,7 @@ class TranslationOtherResults(Slide):
             FadeOut(slidetitle),
             AnimationGroup(
                 AnimationGroup(bulletlist.clear(), run_time=0.5),
-                Uncreate(bulletlist),
+                FadeOut(bulletlist),
                 lag_ratio=0.7,
             ),
             run_time=1.5,

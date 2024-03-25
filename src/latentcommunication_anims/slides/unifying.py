@@ -81,7 +81,7 @@ class Unifying(Slide):
         self.next_slide(auto_next=True)
 
         self.play(
-            Uncreate(bulletlist),
+            FadeOut(bulletlist),
             Uncreate(slidetitle),
             run_time=1,
         )
