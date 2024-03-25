@@ -30,7 +30,7 @@ manim-slides convert \
     TranslationStitching \
     TranslationCrossmodal \
     TranslationOtherResults \
-    Intuition \
+    Formalization \
     Correspondence \
     Limitations \
     BridgeProblem \
