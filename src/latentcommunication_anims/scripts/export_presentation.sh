@@ -26,11 +26,10 @@ manim-slides convert \
     Translation \
     TranslationAlgorithm \
     AffineTransformation \
-    TransaltionMainDifference \
     TranslationStitching \
     TranslationCrossmodal \
     TranslationOtherResults \
-    Intuition \
+    Formalization \
     Correspondence \
     Limitations \
     BridgeProblem \
@@ -46,3 +45,6 @@ manim-slides convert \
     Unireps \
     Thanks \
     index.html
+
+
+    # TransaltionMainDifference \

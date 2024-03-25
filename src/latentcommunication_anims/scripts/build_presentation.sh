@@ -29,6 +29,7 @@ manim src/latentcommunication_anims/slides/translation/results.py TranslationOth
 
 
 # Intuition
+manim src/latentcommunication_anims/slides/formalization.py Formalization
 manim src/latentcommunication_anims/slides/intuition.py Intuition
 manim src/latentcommunication_anims/slides/correspondence.py Correspondence
 
