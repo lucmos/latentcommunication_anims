@@ -5,7 +5,7 @@ from nn_core.common import PROJECT_ROOT
 
 FONT_SIZE = 38
 
-from powermanim.components.powermanim import PowerManim
+from powermanim.components.logo import PowerManim
 
 
 class Thanks(Slide):
