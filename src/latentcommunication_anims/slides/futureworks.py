@@ -42,7 +42,7 @@ class FutureWorks(Slide):
                     level=0,
                 ),
                 Bullet(
-                    r"Automatic Data Curation: exploit \emph{good models} to curate the data",
+                    r"Automatic Data Curation: exploit \emph{multiple good models} to curate the data",
                     font_size=FONT_SIZE,
                     level=0,
                 ),
