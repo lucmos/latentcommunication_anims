@@ -375,6 +375,6 @@ def relative_projection(x, anchors):
 
         self.wait()
         self.next_slide(auto_next=True)
-        self.play(*(Uncreate(x) for x in (title, properties_list, cosine, arrow, invariance)))
+        self.play(*(FadeOut(x) for x in (title, properties_list, cosine, arrow, invariance)))
 
         self.wait(0.1)
