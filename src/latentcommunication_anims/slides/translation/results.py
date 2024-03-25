@@ -70,7 +70,6 @@ class TranslationOtherResults(Slide):
         self.play(
             FadeOut(slidetitle),
             AnimationGroup(
-                AnimationGroup(bulletlist.clear(), run_time=0.5),
                 FadeOut(bulletlist),
                 lag_ratio=0.7,
             ),
