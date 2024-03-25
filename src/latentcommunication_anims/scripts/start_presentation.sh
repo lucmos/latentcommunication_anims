@@ -18,7 +18,6 @@ manim-slides present \
     Translation \
     TranslationAlgorithm \
     AffineTransformation \
-    TransaltionMainDifference \
     TranslationStitching \
     TranslationCrossmodal \
     TranslationOtherResults \
@@ -36,6 +35,7 @@ manim-slides present \
     Conclusions \
     FutureWorks \
     Unireps \
-    Thanks \
+    Thanks 
 
+    # TransaltionMainDifference \
     # Intuition \

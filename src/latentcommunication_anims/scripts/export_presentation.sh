@@ -26,7 +26,6 @@ manim-slides convert \
     Translation \
     TranslationAlgorithm \
     AffineTransformation \
-    TransaltionMainDifference \
     TranslationStitching \
     TranslationCrossmodal \
     TranslationOtherResults \
@@ -46,3 +45,6 @@ manim-slides convert \
     Unireps \
     Thanks \
     index.html
+
+
+    # TransaltionMainDifference \
