@@ -276,7 +276,7 @@ class TranslationAlgorithm(Slide):
         self.next_slide()
         self.play(bulletlist.only_next())
 
-        arrow = Arrow(0.2 * RIGHT, 0.2 * LEFT).next_to(bulletlist.rows[-1][-1], RIGHT, buff=MED_LARGE_BUFF)
+        arrow = Arrow(0.2 * RIGHT, 0.2 * LEFT).next_to(bulletlist[-1][-1], RIGHT, buff=MED_LARGE_BUFF)
         arrow_label = Tex(r"\textbf{Mostly orthogonal!}", font_size=38).next_to(arrow, RIGHT)
 
         self.wait(0.1)
