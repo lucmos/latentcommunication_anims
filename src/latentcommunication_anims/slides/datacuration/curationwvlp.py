@@ -47,7 +47,7 @@ class CurationWVLP(Slide):
         self.next_slide(auto_next=True)
 
         self.play(
-            FadeOut(slide_title),
+            # FadeOut(slide_title),
             FadeOut(wvlp),
             FadeOut(tldr),
             FadeOut(reference),

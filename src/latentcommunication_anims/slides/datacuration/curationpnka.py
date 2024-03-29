@@ -6,7 +6,7 @@ from nn_core.common import PROJECT_ROOT
 class CurationPNKA(Slide):
     def construct(self):
         slide_title = Tex("Why should it work?").to_edge(UP)
-
+        self.add(slide_title)
         pnka = (
             ImageMobject(PROJECT_ROOT / "data" / "datacuration" / "pnka")
             .scale(0.9)
@@ -40,7 +40,7 @@ class CurationPNKA(Slide):
 
         self.play(
             AnimationGroup(
-                FadeIn(slide_title),
+                # FadeIn(slide_title),
                 FadeIn(pnka),
                 AnimationGroup(*(FadeIn(x) for x in tldr), lag_ratio=0.5),
                 lag_ratio=0.5,

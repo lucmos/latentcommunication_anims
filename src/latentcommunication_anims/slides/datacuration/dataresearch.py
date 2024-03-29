@@ -124,3 +124,4 @@ class DataResearch(Slide):
             FadeOut(bulletlist),
             Uncreate(title),
         )
+        self.wait(0.1)
