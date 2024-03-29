@@ -35,7 +35,7 @@ manim-slides present \
     Conclusions \
     FutureWorks \
     Unireps \
-    Thanks 
+    Thanks
 
     # TransaltionMainDifference \
     # Intuition \

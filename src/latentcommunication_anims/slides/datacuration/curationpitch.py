@@ -1,8 +1,6 @@
 from manim import *
 from manim_slides.slide import Slide
-from powermanim import Bullet, BulletList, GroupActivable, Reference, SectionTitle, VAutoActivable
-
-from latentcommunication_anims.utils import section_slide
+from powermanim import Bullet, BulletList
 
 FONT_SIZE = 44
 

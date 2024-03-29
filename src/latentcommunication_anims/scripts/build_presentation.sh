@@ -36,7 +36,7 @@ manim src/latentcommunication_anims/slides/applications/rl.py RL && \
 manim src/latentcommunication_anims/slides/conclusions.py Conclusions && \
 manim src/latentcommunication_anims/slides/futureworks.py FutureWorks && \
 manim src/latentcommunication_anims/slides/unireps.py Unireps && \
-manim src/latentcommunication_anims/slides/thanks.py Thanks 
+manim src/latentcommunication_anims/slides/thanks.py Thanks
 
 
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel && \

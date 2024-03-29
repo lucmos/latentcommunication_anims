@@ -32,7 +32,6 @@ def _set_tex_colors(texobj: MathTex, indices: tp.Sequence[int], color: Color):
 
 # class Formalization(Scene):
 class Formalization(Slide):
-
     def build_ambient_space(
         self,
         label_text: tp.Sequence[str],
@@ -82,7 +81,6 @@ class Formalization(Slide):
         return VDict({"label": label, "space": ambient_space, "embedding": inner_manifold})
 
     def construct(self) -> None:
-
         input_space_x = self.build_ambient_space(
             label_text="X",
             inner_manifold=RegularPolygon(5),
