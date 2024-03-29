@@ -31,7 +31,7 @@ class DataResearch(Slide):
                     group=0,
                 ),
                 Bullet(
-                    "Detection of conceptually comples samples (important!)",
+                    "Detection of conceptually complex samples (important!)",
                     force_inline=True,
                     font_size=FONT_SIZE,
                     level=0,
@@ -80,7 +80,7 @@ class DataResearch(Slide):
                     group=4,
                 ),
                 Bullet(
-                    "e.g., exploiting the anchors selection: $d(mad, doctor) = d(woman, doctor)$",
+                    "e.g., exploiting the anchors selection: $d(man, doctor) = d(woman, doctor)$",
                     font_size=FONT_SIZE,
                     level=1,
                     adjustment=0.05,
