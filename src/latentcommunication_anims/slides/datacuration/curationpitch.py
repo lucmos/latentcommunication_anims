@@ -9,7 +9,11 @@ class CurationPitch(Slide):
     def construct(self):
         slide_title = Tex("tldr.").to_edge(UP)
 
-        description = Tex(r"Leverage multiple (pretrained) models\\[1.5ex]to curate data").scale(1.25)
+        description = (
+            Tex(r"Leverage multiple (pretrained) models\\[1.5ex]to curate data")
+            .scale(1.25)
+            .shift(UP * 0.5)
+        )
 
         intuition = (
             BulletList(
