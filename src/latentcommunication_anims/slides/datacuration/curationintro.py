@@ -1,24 +1,13 @@
 from manim import *
 from manim_slides.slide import Slide
-from powermanim import (
-    Bullet,
-    BulletList,
-    GroupActivable,
-    Reference,
-    SectionTitle,
-    VAutoActivable,
-)
-
-from latentcommunication_anims.utils import section_slide
+from powermanim import GroupActivable, SectionTitle, VAutoActivable
 
 FONT_SIZE = 44
 
 
 class CurationIntro(Slide):
     def construct(self):
-        slide_title = SectionTitle(
-            section_title=r"Automatic Data Curation\\ {\scriptsize with Latent Communication}"
-        )
+        slide_title = SectionTitle(section_title=r"Automatic Data Curation\\ {\scriptsize with Latent Communication}")
         curation_goal = (
             GroupActivable(
                 VAutoActivable(

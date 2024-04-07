@@ -111,8 +111,7 @@ class RelRepsAlgo(Slide):
             indent_buff=MED_LARGE_BUFF * 1.25,
             left_buff=MED_LARGE_BUFF,
             scale_active=1.25,
-            global_shift=DOWN * 0.275,
-        )
+        ).shift(DOWN * 0.275)
         self.play(FadeIn(bulletlist), run_time=0.5)
 
         self.wait(0.5)
@@ -163,12 +162,21 @@ class RelRepsAlgo(Slide):
         anims = []
         dots = []
         for image, color in zip(
-            itertools.chain(anchor_images.submobjects, [sample_image]), [*ANCHORS_POINT_COLORS, SAMPLE_COLOR]
+            itertools.chain(anchor_images.submobjects, [sample_image]),
+            [*ANCHORS_POINT_COLORS, SAMPLE_COLOR],
         ):
             anims.append(
                 AnimationGroup(
                     FadeOut(image),
-                    FadeIn(d := Dot(point=image.get_center(), radius=0.15, color=color, fill_opacity=1, z_index=1)),
+                    FadeIn(
+                        d := Dot(
+                            point=image.get_center(),
+                            radius=0.15,
+                            color=color,
+                            fill_opacity=1,
+                            z_index=1,
+                        )
+                    ),
                     lag_ratio=0.5,
                 )
             )
@@ -348,7 +356,8 @@ def relative_projection(x, anchors):
 
         arrow = Arrow(0.5 * UP, 0.5 * DOWN).next_to(cosine, DOWN, buff=MED_LARGE_BUFF)
         invariance = Tex(
-            r"invariant to \textbf{angle-norm preserving transformations} of the latent space", font_size=34
+            r"invariant to \textbf{angle-norm preserving transformations} of the latent space",
+            font_size=34,
         ).next_to(arrow, DOWN, buff=MED_LARGE_BUFF)
 
         self.play(

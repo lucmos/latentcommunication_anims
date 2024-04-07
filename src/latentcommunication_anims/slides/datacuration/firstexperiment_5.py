@@ -3,7 +3,6 @@ from manim_slides.slide import Slide
 from powermanim.layouts.arrangedbullets import Bullet
 from powermanim.templates.bulletlist import BulletList
 
-
 FONT_SIZE = 44
 
 
@@ -14,9 +13,7 @@ class DataExperiment5(Slide):
         )
         title.to_edge(UP)
 
-        subtitle = Tex(r"\emph{if $M_1$ and $M_2$ have different performance}").scale(
-            0.75
-        )
+        subtitle = Tex(r"\emph{if $M_1$ and $M_2$ have different performance}").scale(0.75)
         subtitle.next_to(title, DOWN)
 
         bulletlist = (

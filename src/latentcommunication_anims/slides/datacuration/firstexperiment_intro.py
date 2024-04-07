@@ -1,9 +1,6 @@
 from manim import *
 from manim_slides.slide import Slide
-from powermanim import (
-    SectionTitle,
-)
-
+from powermanim import SectionTitle
 
 FONT_SIZE = 44
 

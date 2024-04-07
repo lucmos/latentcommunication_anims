@@ -3,7 +3,6 @@ from manim_slides.slide import Slide
 from powermanim.layouts.arrangedbullets import Bullet
 from powermanim.templates.bulletlist import BulletList
 
-
 FONT_SIZE = 44
 
 

@@ -18,9 +18,17 @@ class TranslationOtherResults(Slide):
                 group=0,
                 symbol=None,
             ),
-            Bullet(r"Both on generation and classification tasks", font_size=FONT_SIZE, level=1, group=0),
             Bullet(
-                r"\textbf{Cross-architecture}: more than 10 pre-trained models!", font_size=FONT_SIZE, level=1, group=1
+                r"Both on generation and classification tasks",
+                font_size=FONT_SIZE,
+                level=1,
+                group=0,
+            ),
+            Bullet(
+                r"\textbf{Cross-architecture}: more than 10 pre-trained models!",
+                font_size=FONT_SIZE,
+                level=1,
+                group=1,
             ),
             Bullet(
                 r"\textbf{Cross-modality}: stitching between vision and language latent spaces",
@@ -28,7 +36,12 @@ class TranslationOtherResults(Slide):
                 level=1,
                 group=2,
             ),
-            Bullet(r"And evaluate it on more than 10 datasets ", font_size=FONT_SIZE, level=1, group=3),
+            Bullet(
+                r"And evaluate it on more than 10 datasets ",
+                font_size=FONT_SIZE,
+                level=1,
+                group=3,
+            ),
             Bullet(
                 r"We observe that the transformation $\mathcal{T}$ can be\\",
                 r"constrained to be \textbf{orthogonal} without performance loss",
@@ -44,7 +57,6 @@ class TranslationOtherResults(Slide):
             *conclusions,
             line_spacing=MED_LARGE_BUFF,
             left_buff=MED_LARGE_BUFF * 0.9,
-            global_shift=DOWN * 0.4,
             scale_active=1.02,
             inactive_opacity=0.35,
         ).next_to(slidetitle, DOWN, buff=LARGE_BUFF * 0.8)
