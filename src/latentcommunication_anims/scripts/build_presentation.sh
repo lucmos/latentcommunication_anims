@@ -36,8 +36,19 @@ manim src/latentcommunication_anims/slides/applications/rl.py RL && \
 manim src/latentcommunication_anims/slides/conclusions.py Conclusions && \
 manim src/latentcommunication_anims/slides/futureworks.py FutureWorks && \
 manim src/latentcommunication_anims/slides/unireps.py Unireps && \
-manim src/latentcommunication_anims/slides/thanks.py Thanks 
-
+manim src/latentcommunication_anims/slides/thanks.py Thanks && \
+manim src/latentcommunication_anims/slides/datacuration/curationintro.py CurationIntro && \
+manim src/latentcommunication_anims/slides/datacuration/curationpitch.py CurationPitch && \
+manim src/latentcommunication_anims/slides/datacuration/curationwvlp.py CurationWVLP && \
+manim src/latentcommunication_anims/slides/datacuration/curationpnka.py CurationPNKA && \
+manim src/latentcommunication_anims/slides/datacuration/dataresearch.py DataResearch  && \
+manim src/latentcommunication_anims/slides/datacuration/firstexperiment_intro.py DataExperimentIntro && \
+manim src/latentcommunication_anims/slides/datacuration/firstexperiment_1.py DataExperiment1 && \
+manim src/latentcommunication_anims/slides/datacuration/firstexperiment_2.py DataExperiment2 && \
+manim src/latentcommunication_anims/slides/datacuration/firstexperiment_3.py DataExperiment3 && \
+manim src/latentcommunication_anims/slides/datacuration/firstexperiment_4.py DataExperiment4 && \
+manim src/latentcommunication_anims/slides/datacuration/firstexperiment_5.py DataExperiment5 && \
+manim src/latentcommunication_anims/slides/datacuration/advantages.py DataAdvantages
 
 # manim src/latentcommunication_anims/slides/toy_model.py ToyModel && \
 # manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt && \

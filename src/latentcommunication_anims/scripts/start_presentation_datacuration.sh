@@ -35,7 +35,16 @@ manim-slides present \
     Conclusions \
     FutureWorks \
     Unireps \
+    CurationIntro \
+    CurationPitch \
+    CurationWVLP \
+    CurationPNKA \
+    DataResearch  \
+    DataExperimentIntro \
+    DataExperiment1 \
+    DataExperiment2 \
+    DataExperiment3 \
+    DataExperiment4 \
+    DataExperiment5 \
+    DataAdvantages \
     Thanks
-
-    # TransaltionMainDifference \
-    # Intuition \
