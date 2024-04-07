@@ -44,10 +44,9 @@ class Intuition(Slide):
             *conclusions,
             line_spacing=LARGE_BUFF * 1.5,
             left_buff=MED_SMALL_BUFF * 2,
-            global_shift=DOWN * 0.5,
             scale_active=1.15,
             inactive_opacity=0.25,
-        )
+        ).shift(DOWN * 0.5)
 
         self.play(
             FadeIn(x := Tex(slidetitle_text).to_edge(UP)),
