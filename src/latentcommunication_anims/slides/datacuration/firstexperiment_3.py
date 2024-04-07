@@ -30,7 +30,7 @@ class DataExperiment3(Slide):
                     group=1,
                 ),
                 Bullet(
-                    r"Determine a threshold $t$ that divides ``easy'' samples from ``hard'' samples.This involves:",
+                    r"Determine a threshold $t$ that divides ``easy'' samples from ``hard'' samples. This involves:",
                     force_inline=True,
                     font_size=FONT_SIZE,
                     level=0,
