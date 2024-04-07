@@ -1,18 +1,15 @@
 from manim import *
 from manim_slides.slide import Slide
-from nn_core.common import PROJECT_ROOT
 from powermanim import Reference
+
+from nn_core.common import PROJECT_ROOT
 
 
 class CurationWVLP(Slide):
     def construct(self):
         slide_title = Tex("Why should it work?").to_edge(UP)
 
-        wvlp = (
-            ImageMobject(PROJECT_ROOT / "data" / "datacuration" / "wvlp")
-            .scale(0.7)
-            .to_edge(LEFT)
-        )
+        wvlp = ImageMobject(PROJECT_ROOT / "data" / "datacuration" / "wvlp").scale(0.7).to_edge(LEFT)
         wvlp = Group(wvlp, Tex("State of the Art in WVLP").next_to(wvlp, DOWN))
 
         reference = Reference(

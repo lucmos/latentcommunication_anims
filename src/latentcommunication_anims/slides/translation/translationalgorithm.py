@@ -12,7 +12,12 @@ FONT_SIZE = 28
 SCALE_ACTIVE = 1.25
 DATASET1 = CIFAR100(root=PROJECT_ROOT / "data", train=True, download=True)
 # same as Dataset1 but with grayscale conversion
-DATASET2 = CIFAR100(root=PROJECT_ROOT / "data", train=True, download=True, transform=transforms.Grayscale())
+DATASET2 = CIFAR100(
+    root=PROJECT_ROOT / "data",
+    train=True,
+    download=True,
+    transform=transforms.Grayscale(),
+)
 
 ANCHORS_COLOR = RED
 ANCHORS_POINT_COLORS = [RED_D, GRAY_C, YELLOW_D]
@@ -87,8 +92,7 @@ class TranslationAlgorithm(Slide):
             indent_buff=MED_LARGE_BUFF * 1.25,
             left_buff=MED_LARGE_BUFF,
             scale_active=1.25,
-            global_shift=DOWN * 0.275,
-        )
+        ).shift(DOWN * 0.275)
         self.play(FadeIn(bulletlist), run_time=0.5)
 
         samples = [42, 7, 33]
@@ -119,7 +123,9 @@ class TranslationAlgorithm(Slide):
             )
 
         semantic_alignment = SurroundingRectangle(
-            Group(anchor_images1, anchor_images2, *correspondence), color=TEAL_D, stroke_width=5
+            Group(anchor_images1, anchor_images2, *correspondence),
+            color=TEAL_D,
+            stroke_width=5,
         )
         semantic_alignment_label = Tex(r"\textbf{Semantic Alignment!}", font_size=38).next_to(semantic_alignment, UP)
         semantic_alignment = Group(semantic_alignment, semantic_alignment_label)

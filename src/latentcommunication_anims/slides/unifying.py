@@ -49,18 +49,27 @@ class Unifying(Slide):
 
         FONT_SIZE = 38
         strategies = (
-            Bullet("Project them into a universal space", font_size=FONT_SIZE, level=0, group=0),
-            Bullet(r"Directly translate from one to another", font_size=FONT_SIZE, level=0, group=1),
+            Bullet(
+                "Project them into a universal space",
+                font_size=FONT_SIZE,
+                level=0,
+                group=0,
+            ),
+            Bullet(
+                r"Directly translate from one to another",
+                font_size=FONT_SIZE,
+                level=0,
+                group=1,
+            ),
         )
 
         bulletlist = BulletList(
             *strategies,
             line_spacing=LARGE_BUFF * 1.5,
             left_buff=LARGE_BUFF * 1.5,
-            global_shift=DOWN * 0.4,
             scale_active=1.25,
             inactive_opacity=0.35,
-        )
+        ).shift(DOWN * 0.4)
 
         self.play(
             AnimationGroup(
