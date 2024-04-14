@@ -1,3 +1,4 @@
+from latentcommunication_anims.slides.formalization import X_COLOR, Y_COLOR
 from manim import *
 from manim_slides import Slide
 from powermanim.layouts.arrangedbullets import Bullet, MathBullet
@@ -19,10 +20,8 @@ DATASET2 = CIFAR100(
     transform=transforms.Grayscale(),
 )
 
-ANCHORS_COLOR = RED
 ANCHORS_POINT_COLORS = [RED_D, GRAY_C, YELLOW_D]
 SAMPLE_COLOR = GREEN
-SIM_COLOR = BLUE
 
 
 class TranslationAlgorithm(Slide):
@@ -32,23 +31,36 @@ class TranslationAlgorithm(Slide):
         self.play(Create(slide_title))
 
         algo = (
-            Bullet(
-                r"Given a subset $\mathbb{A_\mathbb{X}}$ of the training set $\mathbb{X}$",
+            MathBullet(
+                r"\text{Given a subset } \mathbb{A}_",
+                r"{X}",
+                r"\text{ of the training set }",
+                r"{X}",
                 font_size=FONT_SIZE,
                 group=0,
             ),
-            Bullet(
-                r"a subset $\mathbb{A_\mathbb{Y}}$ of the training set $\mathbb{Y}$",
+            MathBullet(
+                r"\text{A subset }",
+                r"{\mathbb{A}_",
+                r"{Y}",
+                r"}",
+                r"\text{of the training set }",
+                r"{Y}",
                 font_size=FONT_SIZE,
                 group=1,
             ),
             Bullet(
-                r"and a \textbf{correspondence} between them",
+                r"And a \textbf{correspondence} between them",
                 font_size=FONT_SIZE,
                 group=2,
             ),
-            Bullet(
-                r"Apply the respective encoding functions $E_x$ and $E_y$",
+            MathBullet(
+                r"\text{Apply the respective encoders }",
+                r"E_",
+                "X",
+                r"\text{ and }",
+                r"E_",
+                "Y",
                 font_size=FONT_SIZE,
                 group=3,
             ),
@@ -64,7 +76,11 @@ class TranslationAlgorithm(Slide):
                 group=5,
             ),
             MathBullet(
-                r"\mathcal{T}(\mathbf{x}) = \mathbf{R} \mathbb{A_\mathbb{X}} + \mathbf{b}",
+                r"\mathcal{T}(",
+                r"\mathbf{x}",
+                r") = \mathbf{R} \mathbb{A}_",
+                r"{X}",
+                r"+ \mathbf{b}",
                 font_size=FONT_SIZE + 5,
                 symbol=None,
                 level=1,
@@ -72,19 +88,17 @@ class TranslationAlgorithm(Slide):
                 adjustment=UP * MED_LARGE_BUFF * 1.25 * 0.25,
             ),
         )
-        # algo[0][1].set_color(ANCHORS_COLOR)
-        # algo[0][3].set_color(ANCHORS_COLOR)
-        # algo[1][1].set_color(SAMPLE_COLOR)
-        # algo[-2][1].set_color(SAMPLE_COLOR)
-        # algo[3][1].set_color(SIM_COLOR)
-        # for color, entity_idxs in (
-        #     (SIM_COLOR, [3, 9, 15]),
-        #     (SAMPLE_COLOR, [1, 5, 11, 17]),
-        # ):
-        #     for entity_idx in entity_idxs:
-        #         algo[-1][entity_idx].set_color(color)
-        # for color, entity_idx in zip(ANCHORS_POINT_COLORS, [7, 13, 19]):
-        #     algo[-1][entity_idx].set_color(color)
+        for bullet_idx, element_idx, color in (
+            (0, 1, X_COLOR),
+            (0, 3, X_COLOR),
+            (1, 2, Y_COLOR),
+            (1, 5, Y_COLOR),
+            (3, 2, X_COLOR),
+            (3, 5, Y_COLOR),
+            (6, 1, X_COLOR),
+            (6, 3, X_COLOR),
+        ):
+            algo[bullet_idx][element_idx].set_color(color)
 
         bulletlist = BulletList(
             *algo,
@@ -97,14 +111,24 @@ class TranslationAlgorithm(Slide):
 
         samples = [42, 7, 33]
         anchor_images1 = (
-            Group(*[ImageMobject(DATASET1[sample_idx][0], image_mode="RGB") for sample_idx in samples])
+            Group(
+                *[
+                    ImageMobject(DATASET1[sample_idx][0], image_mode="RGB")
+                    for sample_idx in samples
+                ]
+            )
             .scale(3.5)
             .arrange(RIGHT, buff=MED_LARGE_BUFF * 2)
             .to_edge(RIGHT)
             .shift(UP)
         )
         anchor_images2 = (
-            Group(*[ImageMobject(DATASET2[sample_idx][0], image_mode="RGB") for sample_idx in samples])
+            Group(
+                *[
+                    ImageMobject(DATASET2[sample_idx][0], image_mode="RGB")
+                    for sample_idx in samples
+                ]
+            )
             .scale(3.5)
             .arrange(RIGHT, buff=MED_LARGE_BUFF * 2)
             .to_edge(RIGHT)
@@ -112,7 +136,9 @@ class TranslationAlgorithm(Slide):
         )
 
         correspondence = []
-        for anchor_image1, anchor_image2 in zip(anchor_images1.submobjects, anchor_images2.submobjects):
+        for anchor_image1, anchor_image2 in zip(
+            anchor_images1.submobjects, anchor_images2.submobjects
+        ):
             correspondence.append(
                 Line(
                     anchor_image1.get_bottom() + DOWN * 0.25,
@@ -127,7 +153,9 @@ class TranslationAlgorithm(Slide):
             color=TEAL_D,
             stroke_width=5,
         )
-        semantic_alignment_label = Tex(r"\textbf{Semantic Alignment!}", font_size=38).next_to(semantic_alignment, UP)
+        semantic_alignment_label = Tex(
+            r"\textbf{Semantic Alignment!}", font_size=38
+        ).next_to(semantic_alignment, UP)
         semantic_alignment = Group(semantic_alignment, semantic_alignment_label)
 
         self.wait(0.1)
@@ -173,10 +201,26 @@ class TranslationAlgorithm(Slide):
         displacement_factor: float = 0.3
         for image, color in zip(anchor_images1.submobjects, ANCHORS_POINT_COLORS):
             polygon = Polygon(
-                image.get_center() + UL * np.random.uniform(min_displacement, image.width * displacement_factor),
-                image.get_center() + UR * np.random.uniform(min_displacement, image.width * displacement_factor),
-                image.get_center() + DR * np.random.uniform(min_displacement, image.width * displacement_factor),
-                image.get_center() + DL * np.random.uniform(min_displacement, image.width * displacement_factor),
+                image.get_center()
+                + UL
+                * np.random.uniform(
+                    min_displacement, image.width * displacement_factor
+                ),
+                image.get_center()
+                + UR
+                * np.random.uniform(
+                    min_displacement, image.width * displacement_factor
+                ),
+                image.get_center()
+                + DR
+                * np.random.uniform(
+                    min_displacement, image.width * displacement_factor
+                ),
+                image.get_center()
+                + DL
+                * np.random.uniform(
+                    min_displacement, image.width * displacement_factor
+                ),
                 color=color,
                 fill_opacity=1,
                 z_index=1,
@@ -204,9 +248,21 @@ class TranslationAlgorithm(Slide):
         np.random.seed(42)
         for image, color in zip(anchor_images2.submobjects, ANCHORS_POINT_COLORS):
             polygon = Polygon(
-                image.get_center() + UP * np.random.uniform(min_displacement, image.width * displacement_factor),
-                image.get_center() + LEFT * np.random.uniform(min_displacement, image.width * displacement_factor),
-                image.get_center() + RIGHT * np.random.uniform(min_displacement, image.width * displacement_factor),
+                image.get_center()
+                + UP
+                * np.random.uniform(
+                    min_displacement, image.width * displacement_factor
+                ),
+                image.get_center()
+                + LEFT
+                * np.random.uniform(
+                    min_displacement, image.width * displacement_factor
+                ),
+                image.get_center()
+                + RIGHT
+                * np.random.uniform(
+                    min_displacement, image.width * displacement_factor
+                ),
                 color=color,
                 fill_opacity=1,
                 z_index=1,
@@ -282,8 +338,12 @@ class TranslationAlgorithm(Slide):
         self.next_slide()
         self.play(bulletlist.only_next())
 
-        arrow = Arrow(0.2 * RIGHT, 0.2 * LEFT).next_to(bulletlist[-1][-1], RIGHT, buff=MED_LARGE_BUFF * 2)
-        arrow_label = Tex(r"\textbf{Mostly orthogonal!}", font_size=38).next_to(arrow, RIGHT)
+        arrow = Arrow(0.2 * RIGHT, 0.2 * LEFT).next_to(
+            bulletlist[-1][-1], RIGHT, buff=MED_LARGE_BUFF * 2
+        )
+        arrow_label = Tex(r"\textbf{Mostly orthogonal!}", font_size=38).next_to(
+            arrow, RIGHT
+        )
 
         self.wait(0.1)
         self.next_slide()
@@ -306,7 +366,10 @@ class TranslationAlgorithm(Slide):
             FadeOut(bulletlist),
             FadeOut(slide_title),
             FadeOut(semantic_alignment),
-            *(FadeOut(x, shift=DOWN, run_time=1.5) for x in (*correspondence, *polygons)),
+            *(
+                FadeOut(x, shift=DOWN, run_time=1.5)
+                for x in (*correspondence, *polygons)
+            ),
         )
 
     # TODO: Clarify assumption!

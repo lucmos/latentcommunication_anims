@@ -33,7 +33,7 @@ class RelRepsAlgo(Slide):
             Bullet(
                 r"Select a subset",
                 " $\mathbb{A}$ ",
-                "of the training set $\mathbb{X}$, denoted ",
+                "of the training set ${X}$, denoted ",
                 r"\textbf{anchors}",
                 font_size=FONT_SIZE,
                 group=0,
@@ -117,7 +117,12 @@ class RelRepsAlgo(Slide):
         self.wait(0.5)
         self.next_slide()
         anchor_images = (
-            Group(*[ImageMobject(DATASET[sample_idx][0], image_mode="RGB") for sample_idx in [0, 1, 3]])
+            Group(
+                *[
+                    ImageMobject(DATASET[sample_idx][0], image_mode="RGB")
+                    for sample_idx in [0, 1, 3]
+                ]
+            )
             .scale(2)
             .arrange(RIGHT, buff=MED_LARGE_BUFF * 2)
             .to_edge(RIGHT)
@@ -147,7 +152,9 @@ class RelRepsAlgo(Slide):
             .align_to(anchor_images.submobjects[1], RIGHT)
             .shift(DOWN)
         )
-        sample_brace = Tex(r"\textbf{sample}", color=SAMPLE_COLOR, font_size=38).next_to(sample_image, DOWN)
+        sample_brace = Tex(
+            r"\textbf{sample}", color=SAMPLE_COLOR, font_size=38
+        ).next_to(sample_image, DOWN)
         self.play(
             AnimationGroup(
                 bulletlist.only_next(),
@@ -212,7 +219,11 @@ class RelRepsAlgo(Slide):
         lines = []
         for anchor in anchors_dots:
             lines_anim.append(
-                Create(l := Line(anchor.get_center(), sample_dot.get_center(), color=SIM_COLOR).set_opacity(0.5))
+                Create(
+                    l := Line(
+                        anchor.get_center(), sample_dot.get_center(), color=SIM_COLOR
+                    ).set_opacity(0.5)
+                )
             )
             lines.append(l)
         self.play(
@@ -247,7 +258,9 @@ def relative_projection(x, anchors):
             )
         )
 
-        cosine_label = Tex("$sim$", " $=$ ", "cosine similarity", font_size=38).next_to(rendered_code, UP)
+        cosine_label = Tex("$sim$", " $=$ ", "cosine similarity", font_size=38).next_to(
+            rendered_code, UP
+        )
         cosine_label[0].set_color(SIM_COLOR)
 
         self.play(
@@ -263,7 +276,11 @@ def relative_projection(x, anchors):
             )
         )
 
-        differentiable = Tex("(differentiable!)").next_to(rendered_code, DOWN, buff=LARGE_BUFF).set_opacity(0.5)
+        differentiable = (
+            Tex("(differentiable!)")
+            .next_to(rendered_code, DOWN, buff=LARGE_BUFF)
+            .set_opacity(0.5)
+        )
         self.play(FadeIn(differentiable))
 
         self.wait()
@@ -351,7 +368,9 @@ def relative_projection(x, anchors):
         self.wait()
         self.next_slide()
 
-        cosine = Tex("$\mathbf{sim}$", " $=$ ", "cosine similarity", font_size=34).shift(DOWN)
+        cosine = Tex(
+            "$\mathbf{sim}$", " $=$ ", "cosine similarity", font_size=34
+        ).shift(DOWN)
         cosine[0].set_color(SIM_COLOR)
 
         arrow = Arrow(0.5 * UP, 0.5 * DOWN).next_to(cosine, DOWN, buff=MED_LARGE_BUFF)
@@ -384,6 +403,8 @@ def relative_projection(x, anchors):
 
         self.wait()
         self.next_slide(auto_next=True)
-        self.play(*(FadeOut(x) for x in (title, properties_list, cosine, arrow, invariance)))
+        self.play(
+            *(FadeOut(x) for x in (title, properties_list, cosine, arrow, invariance))
+        )
 
         self.wait(0.1)
