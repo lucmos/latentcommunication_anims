@@ -18,7 +18,9 @@ N_BARS = 5
 seed_everything(0)
 
 
-def build_stitching_ae(model_id: str, encoder_color: str, decoder_color: str, label_pos):
+def build_stitching_ae(
+    model_id: str, encoder_color: str, decoder_color: str, label_pos
+):
     scale: float = 0.6
 
     rr_color = GREEN_D
@@ -35,15 +37,28 @@ def build_stitching_ae(model_id: str, encoder_color: str, decoder_color: str, la
         # .set_opacity(START_MODULE_OPACITY)
         .scale(scale)
     )
-    rr_block = Rectangle(height=rr_size * 2, width=1, fill_opacity=0.05).scale(scale).next_to(encoder, RIGHT)
+    rr_block = (
+        Rectangle(height=rr_size * 2, width=1, fill_opacity=0.05)
+        .scale(scale)
+        .next_to(encoder, RIGHT)
+    )
 
-    rr_label = Tex("RR", z_index=2).scale(scale).move_to(rr_block.get_critical_point(ORIGIN))
+    rr_label = (
+        Tex("RR", z_index=2).scale(scale).move_to(rr_block.get_critical_point(ORIGIN))
+    )
     rr_block = VGroup(rr_block, rr_label)
 
     encoder = VGroup(encoder, rr_block)
 
     decoder = (
-        Polygon(RIGHT + 2 * UP, RIGHT + 2 * DOWN, DOWN + LEFT, UP + LEFT, fill_opacity=0.6, color=decoder_color)
+        Polygon(
+            RIGHT + 2 * UP,
+            RIGHT + 2 * DOWN,
+            DOWN + LEFT,
+            UP + LEFT,
+            fill_opacity=0.6,
+            color=decoder_color,
+        )
         # .set_opacity(START_MODULE_OPACITY)
         .scale(scale)
     )
@@ -94,8 +109,12 @@ def fadein_and_move(mob: VMobject, alpha: float, t=0.5):
         # mob.set_style(fill_opacity=fill_opacity)
 
     else:
-        shift_x = interpolate(mob.get_center()[0], mob.target.get_center()[0], (alpha - 0.5) * 2)
-        shift_y = interpolate(mob.get_center()[1], mob.target.get_center()[1], (alpha - 0.5) * 2)
+        shift_x = interpolate(
+            mob.get_center()[0], mob.target.get_center()[0], (alpha - 0.5) * 2
+        )
+        shift_y = interpolate(
+            mob.get_center()[1], mob.target.get_center()[1], (alpha - 0.5) * 2
+        )
 
         mob.move_to([shift_x, shift_y, 0])
 
@@ -152,7 +171,9 @@ def autoencode_anim(
         ),
         AnimationGroup(
             *[
-                Flash(encoder, flash_radius=encoder.height / 2, color=encoder.get_color()),
+                Flash(
+                    encoder, flash_radius=encoder.height / 2, color=encoder.get_color()
+                ),
                 GrowArrow(encoded_arrow, shift=RIGHT),
                 UpdateFromAlphaFunc(mobject=latent, update_function=fadein_and_move),
             ],
@@ -163,7 +184,9 @@ def autoencode_anim(
         AnimationGroup(
             *[
                 GrowArrow(decoding_arrow, shift=RIGHT),
-                Flash(decoder, flash_radius=decoder.height / 2, color=decoder.get_color()),
+                Flash(
+                    decoder, flash_radius=decoder.height / 2, color=decoder.get_color()
+                ),
                 GrowArrow(decoded_arrow, shift=RIGHT),
                 FadeIn(image_out, shift=RIGHT),
             ],
@@ -279,26 +302,42 @@ class TranslationStitching(Slide):
         slide_title = Tex("Relative Training").to_edge(UP)
 
         ae1 = build_stitching_ae(
-            model_id="1", encoder_color=model1_color, decoder_color=model1_color, label_pos=UP
+            model_id="1",
+            encoder_color=model1_color,
+            decoder_color=model1_color,
+            label_pos=UP,
         ).scale(0.85)
         ae2 = build_stitching_ae(
-            model_id="2", encoder_color=model2_color, decoder_color=model2_color, label_pos=DOWN
+            model_id="2",
+            encoder_color=model2_color,
+            decoder_color=model2_color,
+            label_pos=DOWN,
         ).scale(0.85)
         VGroup(ae1, ae2).arrange(buff=1, direction=DOWN)
         VGroup(ae1, ae2).shift(DOWN * 0.5)
 
         self.play(
             AnimationGroup(Create(slide_title), run_time=0.5),
-            AnimationGroup(ShowPassingFlash(Underline(slide_title, color=YELLOW)), run_time=2.5),
-            *{Create(obj) for obj_name, obj in ae1.submob_dict.items() if "arrow" not in obj_name},
-            *{Create(obj) for obj_name, obj in ae2.submob_dict.items() if "arrow" not in obj_name},
+            AnimationGroup(
+                ShowPassingFlash(Underline(slide_title, color=YELLOW)), run_time=2.5
+            ),
+            *{
+                Create(obj)
+                for obj_name, obj in ae1.submob_dict.items()
+                if "arrow" not in obj_name
+            },
+            *{
+                Create(obj)
+                for obj_name, obj in ae2.submob_dict.items()
+                if "arrow" not in obj_name
+            },
         )
 
         # Standard AE mechanism, two different models
         image_indices1 = [0, 1, 2][:1]
         image_indices2 = [0, 4, 5][:1]
         for i, (sample1, sample2) in enumerate(zip(image_indices1, image_indices2)):
-            image1_in = ImageMobject(PROJECT_ROOT / "data" / "assets" / "pebble")
+            image1_in = ImageMobject(PROJECT_ROOT / "data" / "assets" / "ananas")
             dist1 = softmax(np.random.randn(N_BARS) * 1.15)
 
             image1_out = ChartBars(
@@ -309,7 +348,7 @@ class TranslationStitching(Slide):
                 stroke_width=1,
             )
 
-            image2_in = Tex("Pebble")  # .scale_to_fit_width(image1_in.get_width())
+            image2_in = Tex("Ananas")  # .scale_to_fit_width(image1_in.get_width())
             image2_out = ChartBars(
                 Axes(x_range=[0, 6], y_range=[0, 1.5], x_length=0.5, y_length=2),
                 dist1,
@@ -339,9 +378,13 @@ class TranslationStitching(Slide):
             latent_equal = Tex(r"$\approx$", z_index=2).scale(2).rotate(PI / 2)
             decoder_equal = Tex(r"$\approx$", z_index=2).scale(2).rotate(PI / 2)
 
-            latent_equal.add_updater(lambda m: m.move_to((latent1.get_center() + latent2.get_center()) / 2))
+            latent_equal.add_updater(
+                lambda m: m.move_to((latent1.get_center() + latent2.get_center()) / 2)
+            )
             decoder_equal.add_updater(
-                lambda m: m.move_to((ae1["decoder"].get_center() + ae2["decoder"].get_center()) / 2)
+                lambda m: m.move_to(
+                    (ae1["decoder"].get_center() + ae2["decoder"].get_center()) / 2
+                )
             )
 
             self.wait(0.1)
@@ -369,33 +412,47 @@ class TranslationStitching(Slide):
                         AnimationGroup(
                             MoveAlongPath(
                                 ae1["decoder"],
-                                ArcBetweenPoints(ae1["decoder"].get_center(), ae2["decoder"].get_center()),
+                                ArcBetweenPoints(
+                                    ae1["decoder"].get_center(),
+                                    ae2["decoder"].get_center(),
+                                ),
                             ),
                             MoveAlongPath(
                                 ae2["decoder"],
-                                ArcBetweenPoints(ae2["decoder"].get_center(), ae1["decoder"].get_center()),
+                                ArcBetweenPoints(
+                                    ae2["decoder"].get_center(),
+                                    ae1["decoder"].get_center(),
+                                ),
                             ),
                         ),
                     )
                 )
 
         latent_disegual = (
-            MathTex("\\neq", z_index=2).scale(2).rotate(PI / 2).move_to(latent_equal.get_critical_point(ORIGIN))
+            MathTex("\\neq", z_index=2)
+            .scale(2)
+            .rotate(PI / 2)
+            .move_to(latent_equal.get_critical_point(ORIGIN))
         )
         decoder_disegual = (
-            MathTex("\\neq", z_index=2).scale(2).rotate(PI / 2).move_to(decoder_equal.get_critical_point(ORIGIN))
+            MathTex("\\neq", z_index=2)
+            .scale(2)
+            .rotate(PI / 2)
+            .move_to(decoder_equal.get_critical_point(ORIGIN))
         )
         cross1 = Cross(ae1["encoder"][1]).scale(1.15)
         cross2 = Cross(ae2["encoder"][1]).scale(1.15)
 
         self.wait(0.1)
         self.next_slide()
-        slide_title2 = Tex("Absolute Training").to_edge(UP)
+        slide_title3 = Tex("Latent Translation").to_edge(UP)
         self.play(
-            Transform(slide_title, slide_title2),
+            Transform(slide_title, slide_title3),
             Create(cross1),
             Create(cross2),
-            AnimationGroup(ShowPassingFlash(Underline(slide_title2, color=YELLOW)), run_time=2.5),
+            AnimationGroup(
+                ShowPassingFlash(Underline(slide_title3, color=YELLOW)), run_time=2.5
+            ),
         )
 
         self.wait(0.1)
@@ -419,72 +476,72 @@ class TranslationStitching(Slide):
             FadeOut(decoder_equal),
         )
 
-        # Standard AE mechanism, two different models
-        image_indices1 = [2, 2][:1]
-        image_indices2 = [2, 5][:1]
-        for i, (sample1, sample2) in enumerate(zip(image_indices1, image_indices2)):
-            image1_in = ImageMobject(PROJECT_ROOT / "data" / "assets" / "ananas.png")
+        # # Standard AE mechanism, two different models
+        # image_indices1 = [2, 2][:1]
+        # image_indices2 = [2, 5][:1]
+        # for i, (sample1, sample2) in enumerate(zip(image_indices1, image_indices2)):
+        #     image1_in = ImageMobject(PROJECT_ROOT / "data" / "assets" / "ananas.png")
 
-            dist1 = softmax(np.random.randn(N_BARS) * 1.15)
-            image1_out = ChartBars(
-                Axes(x_range=[0, 6], y_range=[0, 1.5], x_length=0.5, y_length=2),
-                dist1,
-                xs=list(range(N_BARS)),
-                fill_color=RED,
-                stroke_width=1,
-            )
+        #     dist1 = softmax(np.random.randn(N_BARS) * 1.15)
+        #     image1_out = ChartBars(
+        #         Axes(x_range=[0, 6], y_range=[0, 1.5], x_length=0.5, y_length=2),
+        #         dist1,
+        #         xs=list(range(N_BARS)),
+        #         fill_color=RED,
+        #         stroke_width=1,
+        #     )
 
-            image2_in = Tex("Ananas")  # .scale_to_fit_width(image1_in.get_width())
-            image2_out = ChartBars(
-                Axes(x_range=[0, 6], y_range=[0, 1.5], x_length=0.5, y_length=2),
-                dist1,
-                xs=list(range(N_BARS)),
-                fill_color=RED,
-                stroke_width=1,
-            )
+        #     image2_in = Tex("Ananas")  # .scale_to_fit_width(image1_in.get_width())
+        #     image2_out = ChartBars(
+        #         Axes(x_range=[0, 6], y_range=[0, 1.5], x_length=0.5, y_length=2),
+        #         dist1,
+        #         xs=list(range(N_BARS)),
+        #         fill_color=RED,
+        #         stroke_width=1,
+        #     )
 
-            forward_anims1, image1_end_anim, latent1 = autoencode_anim(
-                encoder=ae1["encoder"],
-                decoder=ae1["decoder"],
-                encoded_arrow=ae1["encoded_arrow"],
-                decoding_arrow=ae1["decoding_arrow"],
-                image_in=image1_in,
-                image_out=image1_out,
-                latent_color=ORANGE,
-            )
-            forward_anims2, image2_end_anim, latent2 = autoencode_anim(
-                encoder=ae2["encoder"],
-                decoder=ae2["decoder"],
-                encoded_arrow=ae2["encoded_arrow"],
-                decoding_arrow=ae2["decoding_arrow"],
-                image_in=image2_in,
-                image_out=image2_out,
-                latent_color=GREEN,
-                rescale_to_fit=False,
-            )
+        #     forward_anims1, image1_end_anim, latent1 = autoencode_anim(
+        #         encoder=ae1["encoder"],
+        #         decoder=ae1["decoder"],
+        #         encoded_arrow=ae1["encoded_arrow"],
+        #         decoding_arrow=ae1["decoding_arrow"],
+        #         image_in=image1_in,
+        #         image_out=image1_out,
+        #         latent_color=ORANGE,
+        #     )
+        #     forward_anims2, image2_end_anim, latent2 = autoencode_anim(
+        #         encoder=ae2["encoder"],
+        #         decoder=ae2["decoder"],
+        #         encoded_arrow=ae2["encoded_arrow"],
+        #         decoding_arrow=ae2["decoding_arrow"],
+        #         image_in=image2_in,
+        #         image_out=image2_out,
+        #         latent_color=GREEN,
+        #         rescale_to_fit=False,
+        #     )
 
-            self.wait(0.1)
-            self.next_slide()
-            self.play(forward_anims1[0], forward_anims2[0])
+        #     self.wait(0.1)
+        #     self.next_slide()
+        #     self.play(forward_anims1[0], forward_anims2[0])
 
-            self.wait(0.1)
-            self.next_slide()
-            self.play(forward_anims1[1], forward_anims2[1])
+        #     self.wait(0.1)
+        #     self.next_slide()
+        #     self.play(forward_anims1[1], forward_anims2[1])
 
-            self.wait(0.1)
-            self.next_slide()
-            self.play(forward_anims1[2], forward_anims2[2])
+        #     self.wait(0.1)
+        #     self.next_slide()
+        #     self.play(forward_anims1[2], forward_anims2[2])
 
-            self.wait(0.1)
-            self.next_slide()
-            self.play(
-                image1_end_anim,
-                image2_end_anim,
-            )
+        #     self.wait(0.1)
+        #     self.next_slide()
+        #     self.play(
+        #         image1_end_anim,
+        #         image2_end_anim,
+        #     )
 
-        # self.wait(0.1)
-        self.next_slide()
-        slide_title3 = Tex("Latent Translation").to_edge(UP)
+        # # self.wait(0.1)
+        # self.next_slide()
+        # slide_title3 = Tex("Latent Translation").to_edge(UP)
 
         # Prepare for stitching
         t_symbol = Tex(r"$\mathcal{T}$", z_index=2)
@@ -512,7 +569,7 @@ class TranslationStitching(Slide):
             ae1["decoder"].animate.set_opacity(0.1),
             ae2["encoder"].animate.set_opacity(0.1),
             cross2.animate.set_opacity(0.1),
-            Transform(slide_title, slide_title3),
+            # Transform(slide_title, slide_title3),
             AnimationGroup(
                 ShowPassingFlash(Underline(slide_title, color=YELLOW)),
                 Create(tblock),
@@ -536,15 +593,17 @@ class TranslationStitching(Slide):
                 stroke_width=1,
             )
 
-            first_half_start, move_latent_start, second_half_start, end_anim = autoencode_anim_big_stiching(
-                encoder=ae1["encoder"],
-                decoder=ae2["decoder"],
-                encoded_arrow=ae1["encoded_arrow"],
-                decoding_arrow=ae2["decoding_arrow"],
-                image_in=image_in,
-                image_out=image_out,
-                start_color=ORANGE,
-                end_color=GREEN,
+            first_half_start, move_latent_start, second_half_start, end_anim = (
+                autoencode_anim_big_stiching(
+                    encoder=ae1["encoder"],
+                    decoder=ae2["decoder"],
+                    encoded_arrow=ae1["encoded_arrow"],
+                    decoding_arrow=ae2["decoding_arrow"],
+                    image_in=image_in,
+                    image_out=image_out,
+                    start_color=ORANGE,
+                    end_color=GREEN,
+                )
             )
 
             self.wait(0.1)
@@ -581,6 +640,12 @@ class TranslationStitching(Slide):
             Uncreate(t_symbol),
             Uncreate(cross2),
             FadeOut(slide_title),
-            *(Uncreate(ae1[x]) for x in ("encoder", "decoder", "encoder_label", "decoder_label")),
-            *(Uncreate(ae2[x]) for x in ("encoder", "decoder", "encoder_label", "decoder_label")),
+            *(
+                Uncreate(ae1[x])
+                for x in ("encoder", "decoder", "encoder_label", "decoder_label")
+            ),
+            *(
+                Uncreate(ae2[x])
+                for x in ("encoder", "decoder", "encoder_label", "decoder_label")
+            ),
         )
