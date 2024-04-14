@@ -44,7 +44,7 @@ class TranslationAlgorithm(Slide):
                 r"{\mathbb{A}_",
                 r"{Y}",
                 r"}",
-                r"\text{of the training set }",
+                r"\text{ of the training set }",
                 r"{Y}",
                 font_size=FONT_SIZE,
                 group=1,
