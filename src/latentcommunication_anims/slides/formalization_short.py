@@ -76,7 +76,7 @@ class FormalizationShort(Slide):
         self.play(Write(referto), run_time=0.75)
 
         self.wait(0.1)
-        self.next_slide()
+        self.next_slide(auto_next=True)
         self.play(
             AnimationGroup(
                 FadeOut(referto),
