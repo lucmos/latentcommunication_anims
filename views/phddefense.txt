@@ -3,7 +3,7 @@ TitleAnimation
 NeuralNetworks 
 ShapeLatentSpace 
 ParallelOpt 
-Unifying 
+UnifyingShort
 RelReps 
 AnglePreserving 
 RelRepsAlgo 

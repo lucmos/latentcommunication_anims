@@ -6,6 +6,7 @@ manim src/latentcommunication_anims/slides/neural_networks.py NeuralNetworks && 
 manim src/latentcommunication_anims/slides/shape_latent_space.py ShapeLatentSpace && \
 manim src/latentcommunication_anims/slides/parallel_opt.py ParallelOpt && \
 manim src/latentcommunication_anims/slides/unifying.py Unifying && \
+manim src/latentcommunication_anims/slides/unifying_short.py UnifyingShort && \
 manim src/latentcommunication_anims/slides/relative/relreps.py RelReps && \
 manim src/latentcommunication_anims/slides/relative/angle_preserving.py AnglePreserving && \
 manim src/latentcommunication_anims/slides/relative/relreps_algo.py RelRepsAlgo && \
@@ -22,6 +23,7 @@ manim src/latentcommunication_anims/slides/translation/translation_stitching.py 
 manim src/latentcommunication_anims/slides/translation/crossmodal.py TranslationCrossmodal && \
 manim src/latentcommunication_anims/slides/translation/results.py TranslationOtherResults && \
 manim src/latentcommunication_anims/slides/formalization.py Formalization && \
+manim src/latentcommunication_anims/slides/formalization_short.py FormalizationShort && \
 manim src/latentcommunication_anims/slides/intuition.py Intuition && \
 manim src/latentcommunication_anims/slides/correspondence.py Correspondence && \
 manim src/latentcommunication_anims/slides/limitations.py Limitations && \
