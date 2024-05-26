@@ -44,7 +44,7 @@ class TranslationOtherResults(Slide):
             ),
             Bullet(
                 r"We observe that the transformation $\mathcal{T}$ can be\\",
-                r"constrained to be \textbf{orthogonal} without performance loss",
+                r"often constrained to be \textbf{orthogonal} without performance loss",
                 font_size=FONT_SIZE,
                 level=0,
                 group=4,
@@ -74,7 +74,9 @@ class TranslationOtherResults(Slide):
             self.next_slide()
             to_play = [bulletlist.also_next()]
             if group == 5:
-                to_play.append(Circumscribe(conclusions[group], color=BLUE, buff=SMALL_BUFF))
+                to_play.append(
+                    Circumscribe(conclusions[group], color=BLUE, buff=SMALL_BUFF)
+                )
             self.play(*to_play)
         self.wait(0.1)
 
